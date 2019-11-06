@@ -10,7 +10,7 @@ title:       scottp.org
 email:       ''
 description: 'Scott Persinger - personal blog'
 baseurl:     '' # The subpath of your site, e.g. /blog
-url:         'https://type-jekyll.aspirethemes.com/' # The base hostname & protocol for your site
+url:         'https://scottp.org/' # The base hostname & protocol for your site
 twitter:     'https://twitter.com/persingerscott'
 github:      'https://github.com/scottpersinger'
 instagram:   ''
