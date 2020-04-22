@@ -5,10 +5,50 @@
     <description>Scott Persinger - personal blog</description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Wed, 06 Nov 2019 09:28:09 -0800</pubDate>
-    <lastBuildDate>Wed, 06 Nov 2019 09:28:09 -0800</lastBuildDate>
-    <generator>Jekyll v3.6.3</generator>
+    <pubDate>Tue, 21 Apr 2020 23:13:39 -0700</pubDate>
+    <lastBuildDate>Tue, 21 Apr 2020 23:13:39 -0700</lastBuildDate>
+    <generator>Jekyll v3.8.5</generator>
 
+    
+      <item>
+        <title>Technical Debt</title>
+        <description>&lt;p&gt;I have had the great fortune of starting a few companies and products from scratch. These were true mythic &lt;em&gt;green field&lt;/em&gt; opportunities - not a line of code existed when we started. For most companies, however, and most developers, there is some legacy of code written some time in the 
+past. And some of this code may now be weighing you down, or &lt;em&gt;slowing&lt;/em&gt; you down. This condition has inherited the useful name of &lt;em&gt;technical debt&lt;/em&gt;. I want to talk about some of the different types of debt you may encounter and how I think about each of them.&lt;/p&gt;
+
+&lt;h1 id=&quot;debt-is-good&quot;&gt;Debt is good&lt;/h1&gt;
+
+&lt;p&gt;The first thing to remember is that &lt;em&gt;technical debt is good&lt;/em&gt;! This is because technical debt is usually a sign of a successful business - one whose growth and success means that solutions to early problems are now showing their age. Some debt is good, but too much debt can be a killer. The trick is to manage your development process so that debt doesn’t get out of hand.&lt;/p&gt;
+
+&lt;p&gt;Now the truth is, some software businesses are so successful, and grow so fast, that they generate enormous amounts of tech debt. The demand to satisfy the market simply outstrips the capacity of the engineering team to go back and fix old code. You are very lucky if you own equity in a company like this! However, working as a &lt;em&gt;developer&lt;/em&gt; in an organization like this can be very stressful and unrewarding. An increasing percentage of every developer’s day is spent fighting the tech debt inside the product, even as the business may continue growing very successfully.&lt;/p&gt;
+
+&lt;h1 id=&quot;scale-debt&quot;&gt;Scale Debt&lt;/h1&gt;
+
+&lt;p&gt;One typical type of debt comes from solutions that are failing to scale to meet current load demands. Scale problems are inevitable if load is growing, and the techniques for solving them are generally well known until you get to huge scale. The key tool for solving scale problems is to give your team sufficient time to create the new solution. Depending on the system it may take 2-6 months to build something that can handle 10x the load of the old system. Depending on your growth curve you may want to plan to handle 100x the load, and this might mean taking 12 months to build the new system, buying a pre-built solution or service, or hiring a specialist that has built for that scale before.&lt;/p&gt;
+
+&lt;h1 id=&quot;test-debt&quot;&gt;Test debt&lt;/h1&gt;
+
+&lt;p&gt;A very typical situation for growing startups is to find that their system has bad and missing tests. Bad tests are flaky and hard to maintain. But even worse are &lt;em&gt;missing&lt;/em&gt; tests. This manifests as the inability to make invasive code changes with confidence that you aren’t breaking your system. There exist areas of your system that developers are afraid to change because they “work”, today. The problem is that you probably need to add new functionality to these areas, or refactor that code to be more maintanable. The first solution to test debt is straightforward: write more tests. And give your engineering team the schedule slack to write those tests.&lt;/p&gt;
+
+&lt;p&gt;A more subtle challenge is how oftentimes components of your system will not have been designed to be easily testable. A typical example is code that interacts with some external system, but mingles additional logic in with the code that talks to that system. This makes it difficult to write separate tests for the integration logic and the internal logic. It may make sense to refactor those systems or modules in order to make them more testable. Depending on your situation however, sometimes it makes more sense to just rewrite a component from scratch with an eye towards testabilty.&lt;/p&gt;
+
+&lt;h1 id=&quot;architecture-debt&quot;&gt;Architecture debt&lt;/h1&gt;
+
+&lt;p&gt;In my experience the most difficult type of technical debt to fix is &lt;em&gt;architecture debt&lt;/em&gt;. This debt occurs when the architecture of your system (data models, interfaces between modules, assumptions about behavior) does not match your current requirements. The classic example is what I call the “company/org” problem. Most SaaS startups being life with a data model with one entity that represents people, and a containing entity that represents companies. This model works fine until you get big enough that some of your larger customers may have separate groups that all want to use your product. If you model all of those teams under your one-level Company entity, then all of their usage of your product will be mixed together. But if you model each group as a separate Company, then you will likely find it hard to manage billing for the single corporation. The solution is the &lt;em&gt;Organization&lt;/em&gt; model which represents another level of container above your Company entity.&lt;/p&gt;
+
+&lt;p&gt;I have seen and lived through multiple projects which introduced another container level in the company hierarchy, and each one of them was extraordinarily painful. The entities often live at the heart of your system and have accrued tremendous amounts of logic and entanglement with various parts of the system. Building and migrating to the new data model can take many months of preparation, development and testing.&lt;/p&gt;
+
+&lt;p&gt;I don’t have any panacea to offer as a solution for architecture debt, but I do offer some recommendations to help make it more manageable:&lt;/p&gt;
+
+&lt;p&gt;-Maintain agility on your core data model. Separate features like billing info, contact info, and authorization settings from your core entities earlier than is strictly required. And make sure you have really good tests around your core data model.&lt;/p&gt;
+
+&lt;p&gt;-Separate features and concerns into distinct systems. I am not a fan of the current “back to the monolith!” movement. Sure, too many microservices too early is a reciped for a headache. But when monoliths inevitably accrue architecture debt, they can be incredibly difficult to change. Even having a small-N number of cooperating services will give you the change to rearchitect or rebuild one of them without having to rewrite your whole product.&lt;/p&gt;
+
+&lt;p&gt;-Go read &lt;a href=&quot;https://dddcommunity.org/&quot;&gt;Domain Driven Design&lt;/a&gt; by Eric Evans. And then read it again. And then re-read it every 12 months. The ability to iterate your system’s model of the business domain is one of the keys to solving architecture debt.&lt;/p&gt;
+</description>
+        <pubDate>Tue, 21 Apr 2020 00:07:56 -0700</pubDate>
+        <link>http://localhost:4000/2020/04/21/technical-debt/</link>
+        <guid isPermaLink="true">http://localhost:4000/2020/04/21/technical-debt/</guid>
+      </item>
     
       <item>
         <title>Platform migration: personal blog edition</title>
@@ -181,7 +221,7 @@
         <title>Playing with Spark</title>
         <description>&lt;p&gt;I’ve been playing around with Apache Spark recently and ran into a strange issue the very first time I tried to boot up the Spark Shell:&lt;/p&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;java.net.UnknownHostException: spersinger-
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;java.net.UnknownHostException: spersinger-
 ltm1.internal.salesforce.com: spersinger-
 ltm1.internal.salesforce.com: nodename nor servname
 provided, or not known 
@@ -256,7 +296,7 @@ provided, or not known
 
 &lt;p&gt;The hardest part, by far, was getting the S3 bucket configured correctly. It makes sense that AWS locks down bucket access by default, but cutting-and-pasting XML config files into the AWS console is definitely not the “developer experience” one hopes to have in 2015. For your copy-and-paste pleasure here are the settings I configured:&lt;/p&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;Bucket policy
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;Bucket policy
 { 
     &quot;Version&quot;: &quot;2008-10-17&quot;,
     &quot;Statement&quot;: [
@@ -275,23 +315,23 @@ provided, or not known
 
 &lt;p&gt;CORS&lt;/p&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;cp&quot;&gt;&amp;lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&amp;gt;&lt;/span&gt;
-&lt;span class=&quot;nt&quot;&gt;&amp;lt;CORSConfiguration&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;xmlns=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;http://s3.amazonaws.com/doc/2006-03-01/&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
-    &lt;span class=&quot;nt&quot;&gt;&amp;lt;CORSRule&amp;gt;&lt;/span&gt;
-        &lt;span class=&quot;nt&quot;&gt;&amp;lt;AllowedOrigin&amp;gt;&lt;/span&gt;https://scottpblog.herokuapp.com&lt;span class=&quot;nt&quot;&gt;&amp;lt;/AllowedOrigin&amp;gt;&lt;/span&gt;
-        &lt;span class=&quot;nt&quot;&gt;&amp;lt;AllowedMethod&amp;gt;&lt;/span&gt;GET&lt;span class=&quot;nt&quot;&gt;&amp;lt;/AllowedMethod&amp;gt;&lt;/span&gt;
-        &lt;span class=&quot;nt&quot;&gt;&amp;lt;MaxAgeSeconds&amp;gt;&lt;/span&gt;3000&lt;span class=&quot;nt&quot;&gt;&amp;lt;/MaxAgeSeconds&amp;gt;&lt;/span&gt;
-        &lt;span class=&quot;nt&quot;&gt;&amp;lt;AllowedHeader&amp;gt;&lt;/span&gt;Content-&lt;span class=&quot;nt&quot;&gt;&amp;lt;/AllowedHeader&amp;gt;&lt;/span&gt;
-        &lt;span class=&quot;nt&quot;&gt;&amp;lt;AllowedHeader&amp;gt;&lt;/span&gt;Host&lt;span class=&quot;nt&quot;&gt;&amp;lt;/AllowedHeader&amp;gt;&lt;/span&gt;
-    &lt;span class=&quot;nt&quot;&gt;&amp;lt;/CORSRule&amp;gt;&lt;/span&gt;
-    &lt;span class=&quot;nt&quot;&gt;&amp;lt;CORSRule&amp;gt;&lt;/span&gt;
-        &lt;span class=&quot;nt&quot;&gt;&amp;lt;AllowedOrigin&amp;gt;&lt;/span&gt;https://scottpblog.herokuapp.com&lt;span class=&quot;nt&quot;&gt;&amp;lt;/AllowedOrigin&amp;gt;&lt;/span&gt;
-        &lt;span class=&quot;nt&quot;&gt;&amp;lt;AllowedMethod&amp;gt;&lt;/span&gt;GET&lt;span class=&quot;nt&quot;&gt;&amp;lt;/AllowedMethod&amp;gt;&lt;/span&gt;
-        &lt;span class=&quot;nt&quot;&gt;&amp;lt;MaxAgeSeconds&amp;gt;&lt;/span&gt;3000&lt;span class=&quot;nt&quot;&gt;&amp;lt;/MaxAgeSeconds&amp;gt;&lt;/span&gt;
-        &lt;span class=&quot;nt&quot;&gt;&amp;lt;AllowedHeader&amp;gt;&lt;/span&gt;Content-&lt;span class=&quot;nt&quot;&gt;&amp;lt;/AllowedHeader&amp;gt;&lt;/span&gt;
-        &lt;span class=&quot;nt&quot;&gt;&amp;lt;AllowedHeader&amp;gt;&lt;/span&gt;Host&lt;span class=&quot;nt&quot;&gt;&amp;lt;/AllowedHeader&amp;gt;&lt;/span&gt;
-    &lt;span class=&quot;nt&quot;&gt;&amp;lt;/CORSRule&amp;gt;&lt;/span&gt;
-&lt;span class=&quot;nt&quot;&gt;&amp;lt;/CORSConfiguration&amp;gt;&lt;/span&gt;
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&amp;lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&amp;gt;
+&amp;lt;CORSConfiguration xmlns=&quot;http://s3.amazonaws.com/doc/2006-03-01/&quot;&amp;gt;
+    &amp;lt;CORSRule&amp;gt;
+        &amp;lt;AllowedOrigin&amp;gt;https://scottpblog.herokuapp.com&amp;lt;/AllowedOrigin&amp;gt;
+        &amp;lt;AllowedMethod&amp;gt;GET&amp;lt;/AllowedMethod&amp;gt;
+        &amp;lt;MaxAgeSeconds&amp;gt;3000&amp;lt;/MaxAgeSeconds&amp;gt;
+        &amp;lt;AllowedHeader&amp;gt;Content-&amp;lt;/AllowedHeader&amp;gt;
+        &amp;lt;AllowedHeader&amp;gt;Host&amp;lt;/AllowedHeader&amp;gt;
+    &amp;lt;/CORSRule&amp;gt;
+    &amp;lt;CORSRule&amp;gt;
+        &amp;lt;AllowedOrigin&amp;gt;https://scottpblog.herokuapp.com&amp;lt;/AllowedOrigin&amp;gt;
+        &amp;lt;AllowedMethod&amp;gt;GET&amp;lt;/AllowedMethod&amp;gt;
+        &amp;lt;MaxAgeSeconds&amp;gt;3000&amp;lt;/MaxAgeSeconds&amp;gt;
+        &amp;lt;AllowedHeader&amp;gt;Content-&amp;lt;/AllowedHeader&amp;gt;
+        &amp;lt;AllowedHeader&amp;gt;Host&amp;lt;/AllowedHeader&amp;gt;
+    &amp;lt;/CORSRule&amp;gt;
+&amp;lt;/CORSConfiguration&amp;gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;p&gt;And yes, I had to HTML escape all that config to paste it into the Ghost markdown editor. You’re welcome.&lt;/p&gt;
@@ -316,15 +356,15 @@ provided, or not known
 &lt;p&gt;object1.do_slow_stuff()
 You can generate the profile data easily enough:&lt;/p&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;import cProfile
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;import cProfile
 cProfile.runctx(“object1.do_slow_stuff()”, globals(), locals(), “profdata”)
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;p&gt;If you don’t use the &lt;code class=&quot;highlighter-rouge&quot;&gt;runctx&lt;/code&gt; version you can run into trouble in iPython finding variables defined at the repl prompt.&lt;/p&gt;
+&lt;p&gt;If you don’t use the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;runctx&lt;/code&gt; version you can run into trouble in iPython finding variables defined at the repl prompt.&lt;/p&gt;
 
 &lt;p&gt;Now to analyze you’re results:&lt;/p&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;import pstats
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;import pstats
 p = pstats.Stats(“profdata”)
 To print a list of functions taking the most time, try this:
 
@@ -340,14 +380,14 @@ p.sort_stats(‘cumulative’).print_stats(10)
 
 &lt;p&gt;That says, “sort the stats by cumulative time spent inside each function and print the top 10”. Now what you’re looking for is when you have a big drop in total time. Like this:&lt;/p&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;    4    0.083    0.021   15.117    3.779 /lib/sf_adapter.py:1079(_process_data_change)    
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;    4    0.083    0.021   15.117    3.779 /lib/sf_adapter.py:1079(_process_data_change)    
 
     4    0.000    0.000    8.292    2.073 /lib/sf_adapter.py:89(update)
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;p&gt;So there were 4 calls to _process_data_change which took 3.7 secs. This function (probably) called “update”, which constituted 2 secs, but that still leaves 1.7 secs doing something else. To figure out what that “something else” is, we can ask pstats for the functions that our “processdata_change” function called:&lt;/p&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;p.strip_dirs().print_callees(“_process_data_change”)
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;p.strip_dirs().print_callees(“_process_data_change”)
 
 ncalls  tottime  cumtime
 
@@ -485,7 +525,7 @@ Good times.&lt;/p&gt;
         
           <item>
             <title>About</title>
-            <description>&lt;p&gt;My name is Scott Persinger, and this blog collects some of my personal and professional reflections. I am a Bay Area native, married father of three. I was a co-founder at Alier, Remixation, and Cloudconnect. More recently I held engineering leadership positions at Stripe and Heroku.&lt;/p&gt;
+            <description>&lt;p&gt;My name is Scott Persinger, and this blog collects some of my personal and professional reflections. I am a Bay Area native, married father of three. I was a co-founder at Alier, Remixation, and Cloudconnect. More recently I held engineering leadership positions at Heroku, Stripe and now head up engineering at &lt;a href=&quot;https://tatari.tv&quot;&gt;Tatari&lt;/a&gt;.&lt;/p&gt;
 </description>
             <link>http://localhost:4000/about.html</link>
           </item>
@@ -496,114 +536,6 @@ Good times.&lt;/p&gt;
     
       
     
-      
-        
-          <item>
-            <title>Style Guide</title>
-            <description>At [Aspire Themes](http://aspirethemes.com/) I use a lot of tools to help me create WordPress, Ghost and Jekyll themes. Tools will range from development, design, services, hosting and automation.
-
-Graphic design is the paradise of individuality, eccentricity, heresy, abnormality, hobbies, and humors. - George Santayana.
-
----
-
-# Simple default styles for headings
-
-## Simple default styles for headings
-
-### Simple default styles for headings
-
-#### Simple default styles for headings
-
-##### Simple default styles for headings
-
-###### Simple default styles for headings
-
----
-
-* Ut at interdum nunc. Maecenas commodo turpis quis elementum gravida.
-* Nunc ac sapien tellus. Quisque risus enim, tempus eget porttitor.
-* Donec nibh massa, rutrum a sollicitudin eu, lacinia in lorem.
-
----
-
-1. Ut at interdum nunc. Maecenas commodo turpis quis elementum gravida.
-2. Nunc ac sapien tellus. Quisque risus enim, tempus eget porttitor in.
-3. Donec nibh massa, rutrum a sollicitudin eu.
-
----
-
-&gt; Graphic design is the paradise of individuality, eccentricity, heresy, abnormality, hobbies, and humors. - George Santayana
-
----
-
-{% highlight js %}
-'use strict';
-var markdown = require('markdown').markdown;
-function Editor(input, preview) {
-  this.update = function() {
-    preview.innerHTML = markdown.toHTML(input.value);
-  };
-  input.editor = this;
-  this.update();
-}
-{% endhighlight %}
-
-You can add inline code just like this, E.g. `.code { color: #fff; }`
-
-{% highlight css %}
-pre {
-  background-color: #f4f4f4;
-  max-width: 100%;
-  overflow: auto;
-}
-{% endhighlight %}
-
----
-
-Cras sed sodales enim. Duis nec erat magna. Sed scelerisque pretium mi et [unsplash](https://unsplash.com/) ullamcorper mauris aliquam ornare fringilla. In luctus commodo quam eget posuere.
-
----
-
-&lt;iframe src=&quot;https://player.vimeo.com/video/97202679&quot; frameborder=&quot;0&quot; webkitallowfullscreen mozallowfullscreen allowfullscreen&gt;&lt;/iframe&gt;
-
----
-
-&lt;iframe src=&quot;https://embed.ted.com/talks/ted_halstead_a_climate_solution_where_all_sides_can_win&quot; width=&quot;640&quot; height=&quot;360&quot; frameborder=&quot;0&quot; scrolling=&quot;no&quot; allowfullscreen&gt;&lt;/iframe&gt;
-
----
-
-&lt;iframe width=&quot;100%&quot; height=&quot;166&quot; scrolling=&quot;no&quot; frameborder=&quot;no&quot; src=&quot;https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/29738591&amp;amp;color=ff5500&amp;amp;auto_play=false&amp;amp;hide_related=false&amp;amp;show_comments=true&amp;amp;show_user=true&amp;amp;show_reposts=false&quot;&gt;&lt;/iframe&gt;
-
----
-
-&lt;p data-height=&quot;265&quot; data-theme-id=&quot;light&quot; data-slug-hash=&quot;YWvpRo&quot; data-default-tab=&quot;css,result&quot; data-user=&quot;kharrop&quot; data-embed-version=&quot;2&quot; data-pen-title=&quot;Referral Form&quot; class=&quot;codepen&quot;&gt;See the Pen &lt;a href=&quot;http://codepen.io/kharrop/pen/YWvpRo/&quot;&gt;Referral Form&lt;/a&gt; by Kelly Harrop (&lt;a href=&quot;http://codepen.io/kharrop&quot;&gt;@kharrop&lt;/a&gt;) on &lt;a href=&quot;http://codepen.io&quot;&gt;CodePen&lt;/a&gt;.&lt;/p&gt;
-&lt;script async src=&quot;https://production-assets.codepen.io/assets/embed/ei.js&quot;&gt;&lt;/script&gt;
-
----
-
-![about](/images/pages/about.jpeg)
-
----
-
-&lt;input type=&quot;text&quot; placeholder=&quot;I'm an input field!&quot;&gt;
-
----
-
-&lt;button class='c-btn c-btn--small'&gt;Button&lt;/button&gt;
-
-&lt;button class='c-btn'&gt;Button&lt;/button&gt;
-
-&lt;button class='c-btn c-btn--full'&gt;Button&lt;/button&gt;
-
-{% highlight html %}
-&lt;button class='c-btn c-btn--small'&gt;Button&lt;/button&gt;
-&lt;button class='c-btn'&gt;Button&lt;/button&gt;
-&lt;button class='c-btn c-btn--full'&gt;Button&lt;/button&gt;
-{% endhighlight %}
-</description>
-            <link>http://localhost:4000/style-guide.html</link>
-          </item>
-        
       
     
       

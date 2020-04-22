@@ -71,10 +71,6 @@
 
   
     
-      <li class='c-nav__item' role='presentation'>
-        <a class='c-nav__link' href='/style-guide.html'>Style Guide</a>
-      </li>
-    
   
 
   
@@ -116,15 +112,15 @@
 <p>object1.do_slow_stuff()
 You can generate the profile data easily enough:</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>import cProfile
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>import cProfile
 cProfile.runctx(“object1.do_slow_stuff()”, globals(), locals(), “profdata”)
 </code></pre></div></div>
 
-<p>If you don’t use the <code class="highlighter-rouge">runctx</code> version you can run into trouble in iPython finding variables defined at the repl prompt.</p>
+<p>If you don’t use the <code class="language-plaintext highlighter-rouge">runctx</code> version you can run into trouble in iPython finding variables defined at the repl prompt.</p>
 
 <p>Now to analyze you’re results:</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>import pstats
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>import pstats
 p = pstats.Stats(“profdata”)
 To print a list of functions taking the most time, try this:
 
@@ -140,14 +136,14 @@ p.sort_stats(‘cumulative’).print_stats(10)
 
 <p>That says, “sort the stats by cumulative time spent inside each function and print the top 10”. Now what you’re looking for is when you have a big drop in total time. Like this:</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    4    0.083    0.021   15.117    3.779 /lib/sf_adapter.py:1079(_process_data_change)    
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    4    0.083    0.021   15.117    3.779 /lib/sf_adapter.py:1079(_process_data_change)    
 
     4    0.000    0.000    8.292    2.073 /lib/sf_adapter.py:89(update)
 </code></pre></div></div>
 
 <p>So there were 4 calls to _process_data_change which took 3.7 secs. This function (probably) called “update”, which constituted 2 secs, but that still leaves 1.7 secs doing something else. To figure out what that “something else” is, we can ask pstats for the functions that our “processdata_change” function called:</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>p.strip_dirs().print_callees(“_process_data_change”)
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>p.strip_dirs().print_callees(“_process_data_change”)
 
 ncalls  tottime  cumtime
 

@@ -71,10 +71,6 @@
 
   
     
-      <li class='c-nav__item' role='presentation'>
-        <a class='c-nav__link' href='/style-guide.html'>Style Guide</a>
-      </li>
-    
   
 
   
@@ -125,7 +121,7 @@
 
 <p>The hardest part, by far, was getting the S3 bucket configured correctly. It makes sense that AWS locks down bucket access by default, but cutting-and-pasting XML config files into the AWS console is definitely not the “developer experience” one hopes to have in 2015. For your copy-and-paste pleasure here are the settings I configured:</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Bucket policy
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Bucket policy
 { 
     "Version": "2008-10-17",
     "Statement": [
@@ -144,23 +140,23 @@
 
 <p>CORS</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span>
-<span class="nt">&lt;CORSConfiguration</span> <span class="na">xmlns=</span><span class="s">"http://s3.amazonaws.com/doc/2006-03-01/"</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;CORSRule&gt;</span>
-        <span class="nt">&lt;AllowedOrigin&gt;</span>https://scottpblog.herokuapp.com<span class="nt">&lt;/AllowedOrigin&gt;</span>
-        <span class="nt">&lt;AllowedMethod&gt;</span>GET<span class="nt">&lt;/AllowedMethod&gt;</span>
-        <span class="nt">&lt;MaxAgeSeconds&gt;</span>3000<span class="nt">&lt;/MaxAgeSeconds&gt;</span>
-        <span class="nt">&lt;AllowedHeader&gt;</span>Content-<span class="nt">&lt;/AllowedHeader&gt;</span>
-        <span class="nt">&lt;AllowedHeader&gt;</span>Host<span class="nt">&lt;/AllowedHeader&gt;</span>
-    <span class="nt">&lt;/CORSRule&gt;</span>
-    <span class="nt">&lt;CORSRule&gt;</span>
-        <span class="nt">&lt;AllowedOrigin&gt;</span>https://scottpblog.herokuapp.com<span class="nt">&lt;/AllowedOrigin&gt;</span>
-        <span class="nt">&lt;AllowedMethod&gt;</span>GET<span class="nt">&lt;/AllowedMethod&gt;</span>
-        <span class="nt">&lt;MaxAgeSeconds&gt;</span>3000<span class="nt">&lt;/MaxAgeSeconds&gt;</span>
-        <span class="nt">&lt;AllowedHeader&gt;</span>Content-<span class="nt">&lt;/AllowedHeader&gt;</span>
-        <span class="nt">&lt;AllowedHeader&gt;</span>Host<span class="nt">&lt;/AllowedHeader&gt;</span>
-    <span class="nt">&lt;/CORSRule&gt;</span>
-<span class="nt">&lt;/CORSConfiguration&gt;</span>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;CORSConfiguration xmlns="http://s3.amazonaws.com/doc/2006-03-01/"&gt;
+    &lt;CORSRule&gt;
+        &lt;AllowedOrigin&gt;https://scottpblog.herokuapp.com&lt;/AllowedOrigin&gt;
+        &lt;AllowedMethod&gt;GET&lt;/AllowedMethod&gt;
+        &lt;MaxAgeSeconds&gt;3000&lt;/MaxAgeSeconds&gt;
+        &lt;AllowedHeader&gt;Content-&lt;/AllowedHeader&gt;
+        &lt;AllowedHeader&gt;Host&lt;/AllowedHeader&gt;
+    &lt;/CORSRule&gt;
+    &lt;CORSRule&gt;
+        &lt;AllowedOrigin&gt;https://scottpblog.herokuapp.com&lt;/AllowedOrigin&gt;
+        &lt;AllowedMethod&gt;GET&lt;/AllowedMethod&gt;
+        &lt;MaxAgeSeconds&gt;3000&lt;/MaxAgeSeconds&gt;
+        &lt;AllowedHeader&gt;Content-&lt;/AllowedHeader&gt;
+        &lt;AllowedHeader&gt;Host&lt;/AllowedHeader&gt;
+    &lt;/CORSRule&gt;
+&lt;/CORSConfiguration&gt;
 </code></pre></div></div>
 
 <p>And yes, I had to HTML escape all that config to paste it into the Ghost markdown editor. You’re welcome.</p>
