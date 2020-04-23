@@ -19,5 +19,9 @@ Static site generators came out of a reaction to the rising complexity of the st
 
 I'm intrigued to see how richer "site generator" systems like Gatsby evolve over time. Can they actually introduce richer interactivity and persistent state without dragging the full complexity of back-end engineering into the picture?
 
+# GitHub hosting
+
+When I was running Ghost I hosted it on my own simple AWS Lightsail server. Cost like $4/mo and was easy to manage. Nonetheless it seemed retrograde - `ssh`'ing into a cheap VPS just to update my blog! Fortunately GitHub now offers [free hosting](https://help.github.com/en/github/working-with-github-pages/setting-up-a-github-pages-site-with-jekyll) for static sites, and supports Jekyll natively. It's all pretty slick. Once you have it setup then all you need to do is to merge a new post into `master` and it re-deploys the blog. Very simple - no server needed.
+
 
 
