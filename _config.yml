@@ -1,0 +1,68 @@
+# Site setings
+name: 'scottp.org'
+description: 'scott persinger'
+meta_description: 'Scott Persinger personal blog'
+logo:
+# Author image is used in site sidebar and greetings in the home page hero text
+author:
+  image: 'home-headshot.png'
+  greetings: "Startups, team building, and software development"
+favicon: 'assets/images/favicon.ico'
+baseurl: 
+production_url: https://scottp.org/
+disqus:
+mailchimp_url: 
+# Add your GA Tracking Id
+ga_analytics: 
+
+# Contact form setings
+#email: 
+#contact_page_description: 
+#tankyou_page_description: 
+
+# Social links
+twitter: 'persingerscott'
+#facebook: 'username'
+github: 'scottpersinger'
+#codepen: 'username'
+#dribbble: 'username'
+#medium: '@username'
+#instagram: 'username'
+#pinterest: 'username'
+linkedin: 'scottpersinger'
+#producthunt: '@username'
+#quora: 'username'
+
+# Navigation
+navigation:
+  - text: Home
+    url: /
+  - text: About
+    url: /about
+#  - text: Style Guide
+#    url: /style-guide
+#  - text: Contact Me
+#    url: /contact
+  - text: Search
+    url: /search
+
+# Required Plugins
+plugins_dir:
+  - jekyll-paginate
+  - jekyll-seo-tag
+  - jekyll-sitemap
+
+# Pagination
+paginate: 5
+paginate_path: /page:num/
+
+# Permalinks
+permalink: /:title
+
+# Other
+markdown: kramdown
+
+# Sass
+sass:
+  sass_dir: _sass
+  style: compressed

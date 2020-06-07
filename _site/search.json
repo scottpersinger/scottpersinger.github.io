@@ -1,0 +1,131 @@
+[
+  
+    {
+      "title"    : "Technical Debt",
+      "category" : "",
+      "tags"     : "",
+      "url"      : "/technical-debt",
+      "date"     : "April 21, 2020"
+    } ,
+  
+    {
+      "title"    : "Platform migration: personal blog edition",
+      "category" : "",
+      "tags"     : "",
+      "url"      : "/now-hosting-with-jekyll",
+      "date"     : "November 4, 2019"
+    } ,
+  
+    {
+      "title"    : "AWS is a 1000 piece lego kit",
+      "category" : "",
+      "tags"     : "",
+      "url"      : "/aws-is-a-1000-piece-lego-kit",
+      "date"     : "August 25, 2017"
+    } ,
+  
+    {
+      "title"    : "Competition vs. collaboration culture",
+      "category" : "",
+      "tags"     : "",
+      "url"      : "/competition-vs-cooperation-culture",
+      "date"     : "August 24, 2017"
+    } ,
+  
+    {
+      "title"    : "Old habits die hard",
+      "category" : "",
+      "tags"     : "",
+      "url"      : "/old-habits-die-hard",
+      "date"     : "August 7, 2017"
+    } ,
+  
+    {
+      "title"    : "Busting the monolith",
+      "category" : "",
+      "tags"     : "",
+      "url"      : "/busting-the-monolith",
+      "date"     : "August 6, 2017"
+    } ,
+  
+    {
+      "title"    : "Evented I/O with Node.js",
+      "category" : "",
+      "tags"     : "",
+      "url"      : "/evented-i-o-with-node-js",
+      "date"     : "July 28, 2015"
+    } ,
+  
+    {
+      "title"    : "Playing with Spark",
+      "category" : "",
+      "tags"     : "",
+      "url"      : "/playing-with-spark",
+      "date"     : "July 17, 2015"
+    } ,
+  
+    {
+      "title"    : "Photo Books with Montage",
+      "category" : "",
+      "tags"     : "",
+      "url"      : "/photo-books-with-montage",
+      "date"     : "July 16, 2015"
+    } ,
+  
+    {
+      "title"    : "Software cohesion and it’s organizational impact",
+      "category" : "",
+      "tags"     : "",
+      "url"      : "/software-cohesion-and-its-organizational-impact",
+      "date"     : "May 23, 2015"
+    } ,
+  
+    {
+      "title"    : "Self-hosting",
+      "category" : "",
+      "tags"     : "",
+      "url"      : "/self-hosting",
+      "date"     : "May 21, 2015"
+    } ,
+  
+    {
+      "title"    : "Python Profiling made easy",
+      "category" : "",
+      "tags"     : "",
+      "url"      : "/python-profiling-made-easy",
+      "date"     : "October 9, 2013"
+    } ,
+  
+    {
+      "title"    : "Installing Mysql-Python 1.2.4b4 on Mac OS X Lion",
+      "category" : "",
+      "tags"     : "",
+      "url"      : "/installing-mysql-python-1-2-4b4-on-mac-os-x-lion",
+      "date"     : "August 19, 2013"
+    } ,
+  
+    {
+      "title"    : "Fun with RabbitMQ",
+      "category" : "",
+      "tags"     : "",
+      "url"      : "/fun-with-rabbitmq",
+      "date"     : "October 26, 2012"
+    } ,
+  
+    {
+      "title"    : "The death of APIs",
+      "category" : "",
+      "tags"     : "",
+      "url"      : "/untitled",
+      "date"     : "August 26, 2012"
+    } ,
+  
+    {
+      "title"    : "Dependency injection in PHP is a really bad idea",
+      "category" : "",
+      "tags"     : "",
+      "url"      : "/dependency-injection-in-php-is-a-really-bad-idea",
+      "date"     : "January 12, 2012"
+    } 
+  
+]
