@@ -1,6 +1,14 @@
 [
   
     {
+      "title"    : "Trust",
+      "category" : "",
+      "tags"     : "",
+      "url"      : "/the-value-of-trust",
+      "date"     : "May 11, 2020"
+    } ,
+  
+    {
       "title"    : "Technical Debt",
       "category" : "",
       "tags"     : "",

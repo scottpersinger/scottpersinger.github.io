@@ -1,7 +1,11 @@
 ---
-published: false
+layout: post
+title: 'Trust'
+date: '2020-05-11 00:07:56'
+featured_image: 'assets/images/posts/trust.png'
+featured: true
 ---
-Over the years I have come to appreciate how **trust** is key ingredient to any effective engineering organization. The presence of trust enables all sort of things to magically happen, while its abscence can torpedo almost any effort. Patrick Lencioni, in his book [The Advantage](https://www.amazon.com/Advantage-Organizational-Everything-Business-Lencioni-ebook/dp/B006ORWT3Y) places trust as the base principle amongst five that he identifies as the keys to any healthy organization. 
+Over the years I have come to appreciate how **trust** is the key ingredient to any effective engineering organization. The presence of trust enables all sort of things to magically happen, while its abscence can torpedo almost any effort. Patrick Lencioni, in his book [The Advantage](https://www.amazon.com/Advantage-Organizational-Everything-Business-Lencioni-ebook/dp/B006ORWT3Y) places trust as the base principle amongst five that he identifies as the keys to any healthy organization. 
 
 ## Types of trust in the org
 
@@ -39,6 +43,16 @@ These are great long term strategies, but when I find myself mediating a conflic
 * Mediate the meeting yourself.
 * Point out to the participants that you perceive a lack of trust. Ask why they don't trust the intentions of the other side, and how can we work together.
 
+
+## Trust up and down the org
+
+Team members earn trust upwards in the organization in mostly obvious ways: demonstrating committment to the company and its values, delivering on time, and "doing what it takes" rather than narrowly interpreting their responsibilities. 
+
+Another great skill is **transparency** - are you helping me understand what you are working on and how you are making decisions? Being transparent like this goes a long way toward making your manager's life easier. I've had excellent engineers who worked for me, but their work was very opaque. They might promise to deliver a feature in two weeks, and I could count on that timely delivery. But along the way I would get minimal insight into the project. This isn't the best way to build trust. I want to know enough detail to know if there's a problem with the spec, or some particular technical challenge. It is a skill to learn how to broadcast those details at the right level of abstraction upwards in the org.
+
+For leaders, earning trust with those reporting to you is all about transparency and collaboration in decision making. People don't like to be suprised, and they like to have a voice in any decisions that affects them or their work. This doesn't mean resorting to the [holacracy](https://en.wikipedia.org/wiki/Holacracy), but it does mean explaining _how_ and _why_ a decision got made, and reading folks into the decision as early as possible.
+
+One of the persistent challenges I still encounter is the trade-off between quick decision making and _transparent_ decision making. Speed of decisions is one of the critical inputs into your overall velocity as an organization, but quick decisions may erode trust in the people affected. It's critical to build up a high level of trust in the org that will enable you to make fast decisions.
 
 
 

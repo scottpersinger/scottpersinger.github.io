@@ -5,9 +5,71 @@
     <description>scott persinger</description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Sun, 07 Jun 2020 11:43:35 -0700</pubDate>
-    <lastBuildDate>Sun, 07 Jun 2020 11:43:35 -0700</lastBuildDate>
+    <pubDate>Sun, 07 Jun 2020 21:34:52 -0700</pubDate>
+    <lastBuildDate>Sun, 07 Jun 2020 21:34:52 -0700</lastBuildDate>
     <generator>Jekyll v3.8.5</generator>
+    
+      <item>
+        <title>Trust</title>
+        <description>&lt;p&gt;Over the years I have come to appreciate how &lt;strong&gt;trust&lt;/strong&gt; is the key ingredient to any effective engineering organization. The presence of trust enables all sort of things to magically happen, while its abscence can torpedo almost any effort. Patrick Lencioni, in his book &lt;a href=&quot;https://www.amazon.com/Advantage-Organizational-Everything-Business-Lencioni-ebook/dp/B006ORWT3Y&quot;&gt;The Advantage&lt;/a&gt; places trust as the base principle amongst five that he identifies as the keys to any healthy organization.&lt;/p&gt;
+
+&lt;h2 id=&quot;types-of-trust-in-the-org&quot;&gt;Types of trust in the org&lt;/h2&gt;
+
+&lt;p&gt;The basic types of trust are the trust between peers, and trust up and down through the org chart. In larger orgs these basic types can mix into trust between whole groups, but the basic rules will apply.&lt;/p&gt;
+
+&lt;h2 id=&quot;symptoms-for-a-lack-of-trust-between-peers&quot;&gt;Symptoms for a lack of trust between peers&lt;/h2&gt;
+
+&lt;p&gt;The challenge of missing trust is that it will manifest through lots of symptoms that people will describe in other terms. It isn’t often that the participants in a conflict recognize that mistrust is at the root.&lt;/p&gt;
+
+&lt;h3 id=&quot;bob-is-an-idiot&quot;&gt;“Bob is an idiot”&lt;/h3&gt;
+
+&lt;p&gt;This is the classic signal between engineering peers. I know that Alice is a quality engineer, and so is Bob. And yet Alice thinks that Bob is an idiot with regard to some technical question. What Alice is really trying to say is “I don’t trust Bob, and so I don’t trust his technical judgement on X.”&lt;/p&gt;
+
+&lt;h3 id=&quot;bob-has-his-own-agenda&quot;&gt;“Bob has his own agenda”&lt;/h3&gt;
+
+&lt;p&gt;Alice thinks that &lt;em&gt;her&lt;/em&gt; motivations are supporting the company, while Bob has some ulterior motive. Besides being a sign that Alice probably needs to ask Bob more questions and understand his point of view, Alice also needs to understand why she doesn’t &lt;em&gt;trust&lt;/em&gt; Bob to have good motivations, and how she could build that trust.&lt;/p&gt;
+
+&lt;h3 id=&quot;bob-doesnt-communicate-well&quot;&gt;“Bob doesn’t communicate well”&lt;/h3&gt;
+
+&lt;p&gt;Oftentimes Alice will complain that she suffers repeated misunderstandings with Bob. She thinks that Bob just doesn’t know how to communicate effectively. And Bob probably thinks the same thing about Alice. But often these “failures to communicate” are not actually about effectively transmitting information. Rather they indicate low trust between Bob and Alice. Like the trust required to ask “dumb” questions for more clarity. Or the trust to assume good intentions on the other side, so that if Alice doesn’t like Bob’s argument she can keep asking constructive questions until she gets to a fuller understanding.&lt;/p&gt;
+
+&lt;h2 id=&quot;building-trust-between-peers&quot;&gt;Building trust between peers&lt;/h2&gt;
+
+&lt;p&gt;The basic recipe for trust between peers is time and familiarity. The more that Alice and Bob get to know each other, about work and personally, the more they will naturally develop a level of trust. For co-workers sharing an office over a period of time this will likely happen naturally.&lt;/p&gt;
+
+&lt;p&gt;However, in a larger organization, or between peers that work remotely or don’t interact that often, there often won’t be easy chances for trust to develop. In this case leadership should be thinking about continual practice to increase trust:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Develop, communicate, and teach a strong set of &lt;em&gt;core values&lt;/em&gt;. This gives everyone in the org a shared value system and something they will naturally have in common.&lt;/li&gt;
+  &lt;li&gt;Train people for better communication: “Seek first to understand…”, “Assume good intentions”, “Play back what you hear”, etc…&lt;/li&gt;
+  &lt;li&gt;Find ways to help people get to know each other personally - basic “team building” exercises.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;These are great long term strategies, but when I find myself mediating a conflict that I trace back to a lack of trust, then I look to these tactics:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Ask Alice and Bob to meet face to face. Text-only comms (Slack battles, PR comment threads) are a breeding ground for mistrustful communication, which can often be fixed with a simple high-bandwidth meeting.&lt;/li&gt;
+  &lt;li&gt;Mediate the meeting yourself.&lt;/li&gt;
+  &lt;li&gt;Point out to the participants that you perceive a lack of trust. Ask why they don’t trust the intentions of the other side, and how can we work together.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;trust-up-and-down-the-org&quot;&gt;Trust up and down the org&lt;/h2&gt;
+
+&lt;p&gt;Team members earn trust upwards in the organization in mostly obvious ways: demonstrating committment to the company and its values, delivering on time, and “doing what it takes” rather than narrowly interpreting their responsibilities.&lt;/p&gt;
+
+&lt;p&gt;Another great skill is &lt;strong&gt;transparency&lt;/strong&gt; - are you helping me understand what you are working on and how you are making decisions? Being transparent like this goes a long way toward making your manager’s life easier. I’ve had excellent engineers who worked for me, but their work was very opaque. They might promise to deliver a feature in two weeks, and I could count on that timely delivery. But along the way I would get minimal insight into the project. This isn’t the best way to build trust. I want to know enough detail to know if there’s a problem with the spec, or some particular technical challenge. It is a skill to learn how to broadcast those details at the right level of abstraction upwards in the org.&lt;/p&gt;
+
+&lt;p&gt;For leaders, earning trust with those reporting to you is all about transparency and collaboration in decision making. People don’t like to be suprised, and they like to have a voice in any decisions that affects them or their work. This doesn’t mean resorting to the &lt;a href=&quot;https://en.wikipedia.org/wiki/Holacracy&quot;&gt;holacracy&lt;/a&gt;, but it does mean explaining &lt;em&gt;how&lt;/em&gt; and &lt;em&gt;why&lt;/em&gt; a decision got made, and reading folks into the decision as early as possible.&lt;/p&gt;
+
+&lt;p&gt;One of the persistent challenges I still encounter is the trade-off between quick decision making and &lt;em&gt;transparent&lt;/em&gt; decision making. Speed of decisions is one of the critical inputs into your overall velocity as an organization, but quick decisions may erode trust in the people affected. It’s critical to build up a high level of trust in the org that will enable you to make fast decisions.&lt;/p&gt;
+
+</description>
+        <pubDate>Mon, 11 May 2020 00:07:56 -0700</pubDate>
+        <link>http://localhost:4000/the-value-of-trust</link>
+        <guid isPermaLink="true">http://localhost:4000/the-value-of-trust</guid>
+        
+        
+      </item>
     
       <item>
         <title>Technical Debt</title>
@@ -278,29 +340,6 @@ provided, or not known
         <pubDate>Thu, 16 Jul 2015 22:05:00 -0700</pubDate>
         <link>http://localhost:4000/photo-books-with-montage</link>
         <guid isPermaLink="true">http://localhost:4000/photo-books-with-montage</guid>
-        
-        
-      </item>
-    
-      <item>
-        <title>Software cohesion and it’s organizational impact</title>
-        <description>&lt;p&gt;The typical software company builds and maintains a single, monolithic tarball of code. Certainly this is true for most startups. And if your startup becomes successful then eventually the high cohesion within that code base will make it tremendously hard to keep innovating your product. This is the point when many companies launch efforts to attempt to start breaking down the monolith into separately maintainable services (i.e. ‘micro services’).&lt;/p&gt;
-
-&lt;p&gt;That effort is necessary, but very painful. While it’s going on it becomes really difficult to continue to innovate in your product, because not only is the effort consuming a lot of engineering resources, but the nature of the effort (refactoring functionality out into separate services) runs counter to any efforts to improve or change the product. I have heard of at least one major vendor which launched no new features for 12 months while a large refactoring was completed.&lt;/p&gt;
-
-&lt;p&gt;The good news about this process is that it generally mirrors what’s happening organizationally in your engineering team. The team is transitioning from single logical entity to multiple distributed teams.&lt;/p&gt;
-
-&lt;p&gt;But what if you built things the right way from the start? When I joined Heroku I learned that the Heroku platform was built from micro services almost from the start. And our engineering team reflects that low cohesion — we have lots of small, autonomous teams. There is no monolith for us to break up.&lt;/p&gt;
-
-&lt;p&gt;But not surprisingly, we now have a distributed systems challenge writ large. Not only do we have to worry about runtime coordination amongst a large number of independent services, but we have to coordinate the work of a large number of small teams. Mostly those teams can execute independently, but launching features that cross functional teams requires coordination. Resource allocation is also challenging. Smaller, independent teams makes it harder for developers to move across subsystems. Allocating new headcount is similarly difficult because every team feels like it needs “just one more person”.&lt;/p&gt;
-
-&lt;p&gt;One solution to this problem is to inject some cohesion into the system. That is, group multiple teams into larger entities that have internal cohesion and expose a single “management API” to the rest of the org. We are also experimenting with feature teams, eng groups that own and develop an entire feature-set across systems.&lt;/p&gt;
-
-&lt;p&gt;One of our best approaches is to try to standardize our frameworks and tooling for building, deploying, and integrating new services. This helps make new service development much closer to traditional new module development for a monolithic application. Netflix and Amazon are leaders in this kind of effort and their long experience offers a lot of wisdom for organizations looking to build with a micro services approach.&lt;/p&gt;
-</description>
-        <pubDate>Sat, 23 May 2015 22:18:00 -0700</pubDate>
-        <link>http://localhost:4000/software-cohesion-and-its-organizational-impact</link>
-        <guid isPermaLink="true">http://localhost:4000/software-cohesion-and-its-organizational-impact</guid>
         
         
       </item>
