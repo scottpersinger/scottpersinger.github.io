@@ -1,7 +1,8 @@
 # Site setings
 name: 'scottp.org'
+title: 'Scott Persinger personal blog on startups and engineering leadership'
 description: 'scott persinger'
-meta_description: 'Scott Persinger personal blog'
+meta_description: 'Scott Persinger personal blog on startups and engineering leadership'
 logo:
 # Author image is used in site sidebar and greetings in the home page hero text
 author:
