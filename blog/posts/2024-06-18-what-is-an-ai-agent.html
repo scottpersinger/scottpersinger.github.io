@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<!-- ===== EDIT THESE ===== -->
+<title>What Is an AI Agent? — Scott Persinger</title>
+<meta name="description" content="A plain-English explainer of the ReAct pattern — plan, act, observe — and why it turns a text-completion model into a semi-autonomous agent." />
+<meta name="date" content="2024-06-18" />
+<meta name="tags" content="ai-agents, llm, explainer" />
+<!-- ====================== -->
+<meta property="og:type" content="article" />
+<meta property="og:title" content="What Is an AI Agent?" />
+<meta property="og:description" content="A plain-English explainer of the ReAct pattern — plan, act, observe — and why it turns a text-completion model into a semi-autonomous agent." />
+<meta property="og:image" content="https://scottpersinger.com/images/scott_profile.jpg" />
+<link rel="alternate" type="application/rss+xml" title="Scott Persinger — Blog" href="../feed.xml" />
+<link rel="stylesheet" href="../blog.css" />
+</head>
+<body>
+<div id="progress"></div>
+<nav>
+  <div class="wrap">
+    <a class="brand" href="../../">SCOTT<em>_</em>PERSINGER</a>
+    <div class="links">
+      <a href="../../">← Portfolio</a>
+      <a href="../" class="on">06 Blog</a>
+      <a href="../../#connect">Connect</a>
+    </div>
+  </div>
+</nav>
+
+<main>
+<article class="essay">
+  <div class="wrap">
+    <div class="head">
+      <p class="crumbs"><a href="../../">Home</a><span class="sep">/</span><a href="../">Blog</a><span class="sep">/</span><span data-date></span></p>
+      <h1>What Is an AI Agent?</h1>
+      <p class="deck">Everyone is talking about "LLM agents". Here&#39;s the simple pattern underneath them, and why it matters so much.</p>
+      <div class="byline">
+        <img src="../../images/scott_profile.jpg" alt="" />
+        <span><b>Scott Persinger</b></span><span class="dot">·</span>
+        <span data-date></span><span class="dot">·</span>
+        <span id="rt"></span>
+      </div>
+    </div>
+
+    <div class="prose">
+      <p>You have probably been seeing lots of talk and activity around "LLM agents" this year — so let's dive into what this technology is and why it's so important.</p>
+
+      <p>Most people at this point are very familiar with using ChatGPT to either generate new text ("Help me write this code") or to answer questions. Both of these are based on the core LLM feature of "text completion". But increasingly ChatGPT is able to do more complicated things like:</p>
+
+      <ul>
+        <li>Research an answer from the internet, or</li>
+        <li>analyze a spreadsheet and answer questions based on the analysis</li>
+      </ul>
+
+      <p>So how does this work, since these tasks require more than "text completion"? Well back in Oct 2022 (20 months ago!) some researchers created what they called the ReAct pattern ("Reasoning" + "Acting") of LLM prompting. They observed that LLMs could do a few things based on text completion:</p>
+
+      <ul>
+        <li>Instead of returning a single answer to a question, they could create a plan to answer the question ("chain of thought" reasoning)</li>
+        <li>If, when you prompted the LLM, you gave it a set of "actions" that it could use in its answer, then it could select the appropriate action to take based on your question</li>
+      </ul>
+
+      <p>By combining these ideas, they created the ReAct pattern. So each time you query the LLM, it follows these steps:</p>
+
+      <ol type="a">
+        <li>Creates a "plan" to answer the query</li>
+        <li>Chooses an "action" to take to help create the answer</li>
+        <li>Makes an "observation" where it examines the result of the action and uses it to inform the answer</li>
+      </ol>
+
+      <p>Now the clever part is providing "actions" to the LLM. What we do is just describe, in English, a set of possible actions. The LLM generates a text completion like "ACT: &lt;action&gt;", and then <strong>we</strong> parse that bit and return the result of the action to the LLM:</p>
+
+      <pre><code>ACT: &lt;websearch for 'WWII'&gt;
+Result: WWII was called "The Great War" …</code></pre>
+
+      <p>Now imagine that we build a nice set of "actions" (or "tools") for the LLM to use, like:</p>
+
+      <ul>
+        <li>"search the web"</li>
+        <li>"read the text of this spreadsheet"</li>
+        <li>"evaluate this python code"</li>
+      </ul>
+
+      <p>And now we run this ReAct pattern in a loop. Each time through the loop we ask the LLM "Observe your action results, and if you have solved the original query then return the answer". The result is a "semi-autonomous" agent that can take intelligent action to solve a problem!</p>
+
+      <p>So far most of the examples you have seen of this "agentic" behavior are pretty simple: do a web search, read a document, etc. But the potential of this pattern is immense. What if you gave the LLM <strong>lots</strong> and <strong>lots</strong> of tools to use and asked it to perform complex reasoning along the way to accomplishing its task? Well, then you can have agents that can book a flight for you, and the hotel room, and make dinner reservations on your behalf. Or you can have assistants at work which accomplish dreary report reading or data analysis tasks all by themselves.</p>
+
+      <p>We have only gotten a glimpse of where "AI agents" are going to take us, but there is a lot, lot more coming soon.</p>
+
+      <hr>
+      <p class="origin">Originally published on <a href="https://www.linkedin.com/pulse/what-ai-agent-scott-persinger-vqmhc" target="_blank" rel="noopener">LinkedIn</a>.</p>
+    </div>
+
+    <div class="foot">
+      <div class="tags" data-tags></div>
+      <a class="btn line" href="../">← All posts</a>
+    </div>
+
+    <div class="author">
+      <img src="../../images/scott_profile.jpg" alt="Scott Persinger" />
+      <div>
+        <h4>Scott Persinger</h4>
+        <p>Co-founder &amp; CTO at <a href="https://biztrip.ai" target="_blank" rel="noopener">BizTrip.ai</a>. Four-time founder, two acquisitions, 25+ years shipping platforms, payments, and AI agents.
+          <a href="mailto:scottp@biztrip.ai">Email</a> · <a href="https://www.linkedin.com/in/scottpersinger/" target="_blank" rel="noopener">LinkedIn</a> · <a href="https://github.com/scottpersinger" target="_blank" rel="noopener">GitHub</a></p>
+      </div>
+    </div>
+  </div>
+</article>
+</main>
+
+<footer>
+  <p>© 2026 Scott Persinger — <a href="../../">scottpersinger.com</a></p>
+</footer>
+
+<script>
+  // scroll progress
+  const bar = document.getElementById('progress');
+  addEventListener('scroll', () => {
+    const h = document.documentElement;
+    bar.style.width = (h.scrollTop / (h.scrollHeight - h.clientHeight) * 100) + '%';
+  }, {passive:true});
+
+  // date, reading time, tags — all derived from the <meta> tags above
+  const meta = n => (document.querySelector(`meta[name="${n}"]`) || {}).content || '';
+  const d = new Date(meta('date') + 'T12:00:00');
+  const pretty = d.toLocaleDateString('en-US', {year:'numeric', month:'short', day:'numeric'});
+  document.querySelectorAll('[data-date]').forEach(el => el.textContent = pretty);
+  const words = document.querySelector('.prose').textContent.trim().split(/\s+/).length;
+  document.getElementById('rt').textContent = Math.max(1, Math.round(words / 220)) + ' min read';
+  const tags = meta('tags').split(',').map(s => s.trim()).filter(Boolean);
+  document.querySelector('[data-tags]').innerHTML = tags.map(t => `<span class="tag">${t}</span>`).join('');
+</script>
+</body>
+</html>

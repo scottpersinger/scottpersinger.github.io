@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+<channel>
+  <title>Scott Persinger — Blog</title>
+  <link>https://scottpersinger.com/blog/</link>
+  <atom:link href="https://scottpersinger.com/blog/feed.xml" rel="self" type="application/rss+xml" />
+  <description>Writing on AI agents, travel tech, platforms, and building startups.</description>
+  <language>en-us</language>
+  <lastBuildDate>Fri, 21 Aug 2026 23:37:19 +0000</lastBuildDate>
+  <item>
+    <title>Deploying cloud agents for your team</title>
+    <link>https://scottpersinger.com/blog/posts/2026-08-21-cloud-agents.html</link>
+    <guid isPermaLink="true">https://scottpersinger.com/blog/posts/2026-08-21-cloud-agents.html</guid>
+    <pubDate>Fri, 21 Aug 2026 12:00:00 +0000</pubDate>
+    <description>How to move your dev team to using cloud agents as teammates.</description>
+    <category>meta</category><category>ai-agents</category><category>startups</category>
+  </item>
+  <item>
+    <title>Leveraging the Language Understanding in Your AI Agent</title>
+    <link>https://scottpersinger.com/blog/posts/2025-08-19-leveraging-language-understanding-in-your-ai-agent.html</link>
+    <guid isPermaLink="true">https://scottpersinger.com/blog/posts/2025-08-19-leveraging-language-understanding-in-your-ai-agent.html</guid>
+    <pubDate>Tue, 19 Aug 2025 12:00:00 +0000</pubDate>
+    <description>Tool calling isn&#x27;t the only way to give an agent capabilities. Two techniques — code generation and text-to-SQL — that lean on the LLM&#x27;s language understanding instead.</description>
+    <category>ai-agents</category><category>llm</category><category>mcp</category><category>biztrip</category>
+  </item>
+  <item>
+    <title>What Is an AI Agent?</title>
+    <link>https://scottpersinger.com/blog/posts/2024-06-18-what-is-an-ai-agent.html</link>
+    <guid isPermaLink="true">https://scottpersinger.com/blog/posts/2024-06-18-what-is-an-ai-agent.html</guid>
+    <pubDate>Tue, 18 Jun 2024 12:00:00 +0000</pubDate>
+    <description>A plain-English explainer of the ReAct pattern — plan, act, observe — and why it turns a text-completion model into a semi-autonomous agent.</description>
+    <category>ai-agents</category><category>llm</category><category>explainer</category>
+  </item>
+  <item>
+    <title>The Lies We Tell Ourselves in Engineering</title>
+    <link>https://scottpersinger.com/blog/posts/2023-03-15-the-lies-we-tell-ourselves-in-engineering.html</link>
+    <guid isPermaLink="true">https://scottpersinger.com/blog/posts/2023-03-15-the-lies-we-tell-ourselves-in-engineering.html</guid>
+    <pubDate>Wed, 15 Mar 2023 12:00:00 +0000</pubDate>
+    <description>Three convenient untruths engineering teams rely on for optimism: the estimate, the end-of-quarter ship, and the blank-slate quarter.</description>
+    <category>engineering-management</category><category>planning</category><category>tatari</category>
+  </item>
+</channel>
+</rss>

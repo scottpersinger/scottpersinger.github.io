@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<!-- ===== EDIT THESE ===== -->
+<title>POST TITLE — Scott Persinger</title>
+<meta name="description" content="One-sentence summary shown in the index and in link previews." />
+<meta name="date" content="2026-01-01" />
+<meta name="tags" content="ai-agents, startups" />
+<!-- ====================== -->
+<meta property="og:type" content="article" />
+<meta property="og:title" content="POST TITLE" />
+<meta property="og:description" content="One-sentence summary shown in the index and in link previews." />
+<meta property="og:image" content="https://scottpersinger.com/images/scott_profile.jpg" />
+<link rel="alternate" type="application/rss+xml" title="Scott Persinger — Blog" href="../feed.xml" />
+<link rel="stylesheet" href="../blog.css" />
+</head>
+<body>
+<div id="progress"></div>
+<nav>
+  <div class="wrap">
+    <a class="brand" href="../../">SCOTT<em>_</em>PERSINGER</a>
+    <div class="links">
+      <a href="../../">← Portfolio</a>
+      <a href="../" class="on">06 Blog</a>
+      <a href="../../#connect">Connect</a>
+    </div>
+  </div>
+</nav>
+
+<main>
+<article class="essay">
+  <div class="wrap">
+    <div class="head">
+      <p class="crumbs"><a href="../../">Home</a><span class="sep">/</span><a href="../">Blog</a><span class="sep">/</span><span data-date></span></p>
+      <h1>Post title</h1>
+      <p class="deck">A one-or-two sentence deck that sets up the piece.</p>
+      <div class="byline">
+        <img src="../../images/scott_profile.jpg" alt="" />
+        <span><b>Scott Persinger</b></span><span class="dot">·</span>
+        <span data-date></span><span class="dot">·</span>
+        <span id="rt"></span>
+      </div>
+    </div>
+
+    <div class="prose">
+      <p>First paragraph. Gets a drop cap automatically.</p>
+
+      <h2>A section heading</h2>
+      <p>Body text. <a href="https://example.com">Links look like this.</a> Inline <code>code</code> too.</p>
+
+      <ul>
+        <li>Bulleted point</li>
+        <li>Another point</li>
+      </ul>
+
+      <blockquote>A pull quote or citation.<cite>— Who said it</cite></blockquote>
+
+      <pre><code>// a code block
+const x = 42;</code></pre>
+
+      <figure>
+        <img src="../../images/proj_biztrip.png" alt="Describe the image" />
+        <figcaption>Caption for the image.</figcaption>
+      </figure>
+
+      <div class="callout"><h4>Note</h4>A highlighted aside.</div>
+
+      <p>Closing paragraph.</p>
+    </div>
+
+    <div class="foot">
+      <div class="tags" data-tags></div>
+      <a class="btn line" href="../">← All posts</a>
+    </div>
+
+    <div class="author">
+      <img src="../../images/scott_profile.jpg" alt="Scott Persinger" />
+      <div>
+        <h4>Scott Persinger</h4>
+        <p>Co-founder &amp; CTO at <a href="https://biztrip.ai" target="_blank" rel="noopener">BizTrip.ai</a>. Four-time founder, two acquisitions, 25+ years shipping platforms, payments, and AI agents.
+          <a href="mailto:scottp@biztrip.ai">Email</a> · <a href="https://www.linkedin.com/in/scottpersinger/" target="_blank" rel="noopener">LinkedIn</a> · <a href="https://github.com/scottpersinger" target="_blank" rel="noopener">GitHub</a></p>
+      </div>
+    </div>
+  </div>
+</article>
+</main>
+
+<footer>
+  <p>© 2026 Scott Persinger — <a href="../../">scottpersinger.com</a></p>
+</footer>
+
+<script>
+  // scroll progress
+  const bar = document.getElementById('progress');
+  addEventListener('scroll', () => {
+    const h = document.documentElement;
+    bar.style.width = (h.scrollTop / (h.scrollHeight - h.clientHeight) * 100) + '%';
+  }, {passive:true});
+
+  // date, reading time, tags — all derived from the <meta> tags above
+  const meta = n => (document.querySelector(`meta[name="${n}"]`) || {}).content || '';
+  const d = new Date(meta('date') + 'T12:00:00');
+  const pretty = d.toLocaleDateString('en-US', {year:'numeric', month:'short', day:'numeric'});
+  document.querySelectorAll('[data-date]').forEach(el => el.textContent = pretty);
+  const words = document.querySelector('.prose').textContent.trim().split(/\s+/).length;
+  document.getElementById('rt').textContent = Math.max(1, Math.round(words / 220)) + ' min read';
+  const tags = meta('tags').split(',').map(s => s.trim()).filter(Boolean);
+  document.querySelector('[data-tags]').innerHTML = tags.map(t => `<span class="tag">${t}</span>`).join('');
+</script>
+</body>
+</html>

@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<!-- GENERATED from posts/2026-08-21-cloud-agents.md by build.py — edit the .md, not this file -->
+<title>Deploying cloud agents for your team — Scott Persinger</title>
+<meta name="description" content="How to move your dev team to using cloud agents as teammates." />
+<meta name="date" content="2026-08-21" />
+<meta name="tags" content="meta, ai-agents, startups" />
+<meta property="og:type" content="article" />
+<meta property="og:title" content="Deploying cloud agents for your team" />
+<meta property="og:description" content="How to move your dev team to using cloud agents as teammates." />
+<meta property="og:image" content="https://scottpersinger.com/images/scott_profile.jpg" />
+<link rel="alternate" type="application/rss+xml" title="Scott Persinger — Blog" href="../feed.xml" />
+<link rel="stylesheet" href="../blog.css" />
+</head>
+<body>
+<div id="progress"></div>
+<nav>
+  <div class="wrap">
+    <a class="brand" href="../../">SCOTT<em>_</em>PERSINGER</a>
+    <div class="links">
+      <a href="../../">← Portfolio</a>
+      <a href="../" class="on">06 Blog</a>
+      <a href="../../#connect">Connect</a>
+    </div>
+  </div>
+</nav>
+
+<main>
+<article class="essay">
+  <div class="wrap">
+    <div class="head">
+      <p class="crumbs"><a href="../../">Home</a><span class="sep">/</span><a href="../">Blog</a><span class="sep">/</span><span data-date></span></p>
+      <h1>Deploying cloud agents for your team</h1>
+      <p class="deck">The way we build software has radically changed in the era of coding agents.</p>
+      <div class="byline">
+        <img src="../../images/scott_profile.jpg" alt="" />
+        <span><b>Scott Persinger</b></span><span class="dot">·</span>
+        <span data-date></span><span class="dot">·</span>
+        <span id="rt"></span>
+      </div>
+    </div>
+
+    <div class="prose">
+<p>For months now at Biztrip we have moved to what I think of as a &ldquo;cloud agents native&rdquo; software
+development workflow.</p>
+<p>In this flow, developers work with coding agents locally, then push PRs to Github. But then we
+use our &ldquo;cloud agent&rdquo; to review the PR, including acceptance testing of features and changes.</p>
+<p>Because our cloud agent understands our app so well, we even have Product Managers building
+(mostly small) features completely via the agent.</p>
+<figure>
+  <img src="../../images/blog_bizzy_slack.png" alt="The #bizzy-bot Slack channel: team members asking the agent to review PRs, and a thread where the agent reports its review verdict with a screen-recording GIF" />
+  <figcaption>Our agent ("Bizzy") in Slack — the team asks it to review PRs, and it replies in-thread with its findings and a GIF of the feature under test.</figcaption>
+</figure>
+
+<h2>The agent lives in Slack</h2>
+<p>Our primary agent is a Claude Code instance running on a dedicated machine. We create a 
+&ldquo;bridge&rdquo; which connects that Claude Code instance into Slack where anyone from the team
+can interact with it.</p>
+<p>The latest version of the bridge is here: <a href="https://github.com/biztrip-ai/slack-acp-bridge">https://github.com/biztrip-ai/slack-acp-bridge</a></p>
+<p>There are instructions in the repo for getting setup - the process is quite easy but
+requires you have perms to create a new Slack app in your Slack workspace.</p>
+<h2>Setting up your agent</h2>
+<p>There are a few key steps to getting your coding agent setup:</p>
+<ol>
+<li>
+<p>Where will the agent run? We use a dedicated laptop, but its possible to run your
+agent on a cloud server as well. Having the agent running in the office makes it a little
+easier to debug its setup.</p>
+</li>
+<li>
+<p>You need to authenticate your agent. If you run <code>claude</code> manually on the computer then
+you can authenticate into a Claude subscription, and the &ldquo;agent bridge&rdquo; process described
+above will pick it up.</p>
+</li>
+<li>
+<p>Connect your agent to <strong>Github</strong>. The best setup is to install the <code>gh</code> CLI and make sure
+it is authenticated into Github. (See below about agent &lsquo;identity&rsquo;).</p>
+</li>
+<li>
+<p>Setup other MCP servers (like Jira or whatever) your agent might need.</p>
+</li>
+<li>
+<p>Enable <em>browser use</em> for your agent. We have had the best luck with the <code>Claude-in-Chrome</code>
+extension, but you can also use the <code>chrome-devtools</code> MCP. The key here is that 
+your agent should be able to <em>run</em> and <em>test</em> your application, not just run all your
+automated tests (although it should do that too). This is one of the key limitations
+of most <em>cloud agents</em> today like &ldquo;Claude Code on Web&rdquo; - they don&rsquo;t have a browser to
+test with. </p>
+</li>
+<li>
+<p>Give your agent one of more <code>SKILLS</code> to specific to your process. We have a skill
+that explains to Claude how to run and test our primary app, and another skill specific
+for reviewing PRs. Creating skills gives you much more predictable behavior from your
+agent. The easiest way to create a skill is to drive Claude in an interactive session
+to test your app, and then ask it to write a skill that records what it learned.</p>
+</li>
+</ol>
+<h3>Agent identity</h3>
+<p>When you setup Github access for your agent, it&rsquo;s natural to use YOUR authentication
+into Github. This can actually work OK, because you can configure local <code>git</code> to
+use your agent&rsquo;s &ldquo;name&rdquo; when it commits to github. These commits will show up attributed
+both to the agent and to yourself. In our case, we actually created a dedicated 
+Github user account for use by our agent, so all work committed is fully attributable
+to the agent itself.</p>
+<h3>Running in the cloud</h3>
+<p>We ran our first version of our agent locally on a laptop in the office. More recently we&rsquo;ve
+been renting a hosted Mac Mini and running our agent there. Running your agent &ldquo;in the cloud&rdquo;
+is easy enough, the harder part is just setting up the remote machine with all the keys
+and permissions that it needs. If the agent runs in a CAPTCHA on a web page we can login to
+the desktop and solve it. The browser control is really the biggest limitation with a
+model of just &ldquo;run your agent on a VPS somewhere&rdquo;. </p>
+<p>I have been working on a new <a href="https://github.com/freeflow-community/flow-skills/blob/main/provision-cloud-agent/SKILL.md">SKILL</a> intended to make it super easy to run your own cloud agent. Note it is still a work
+in progress.</p>
+    </div>
+
+    <div class="foot">
+      <div class="tags" data-tags></div>
+      <a class="btn line" href="../">← All posts</a>
+    </div>
+
+    <div class="author">
+      <img src="../../images/scott_profile.jpg" alt="Scott Persinger" />
+      <div>
+        <h4>Scott Persinger</h4>
+        <p>Co-founder &amp; CTO at <a href="https://biztrip.ai" target="_blank" rel="noopener">BizTrip.ai</a>. Four-time founder, two acquisitions, 25+ years shipping platforms, payments, and AI agents.
+          <a href="mailto:scottp@biztrip.ai">Email</a> · <a href="https://www.linkedin.com/in/scottpersinger/" target="_blank" rel="noopener">LinkedIn</a> · <a href="https://github.com/scottpersinger" target="_blank" rel="noopener">GitHub</a></p>
+      </div>
+    </div>
+  </div>
+</article>
+</main>
+
+<footer>
+  <p>© 2026 Scott Persinger — <a href="../../">scottpersinger.com</a></p>
+</footer>
+
+<script>
+  // scroll progress
+  const bar = document.getElementById('progress');
+  addEventListener('scroll', () => {
+    const h = document.documentElement;
+    bar.style.width = (h.scrollTop / (h.scrollHeight - h.clientHeight) * 100) + '%';
+  }, {passive:true});
+
+  // date, reading time, tags — all derived from the <meta> tags above
+  const meta = n => (document.querySelector(`meta[name="${n}"]`) || {}).content || '';
+  const d = new Date(meta('date') + 'T12:00:00');
+  const pretty = d.toLocaleDateString('en-US', {year:'numeric', month:'short', day:'numeric'});
+  document.querySelectorAll('[data-date]').forEach(el => el.textContent = pretty);
+  const words = document.querySelector('.prose').textContent.trim().split(/\s+/).length;
+  document.getElementById('rt').textContent = Math.max(1, Math.round(words / 220)) + ' min read';
+  const tags = meta('tags').split(',').map(s => s.trim()).filter(Boolean);
+  document.querySelector('[data-tags]').innerHTML = tags.map(t => `<span class="tag">${t}</span>`).join('');
+</script>
+</body>
+</html>

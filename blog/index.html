@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Blog — Scott Persinger</title>
+<meta name="description" content="Writing by Scott Persinger on AI agents, travel tech, platforms, and building startups." />
+<link rel="alternate" type="application/rss+xml" title="Scott Persinger — Blog" href="feed.xml" />
+<link rel="stylesheet" href="blog.css" />
+</head>
+<body>
+<div id="progress"></div>
+<nav>
+  <div class="wrap">
+    <a class="brand" href="../">SCOTT<em>_</em>PERSINGER</a>
+    <div class="links">
+      <a href="../">← Portfolio</a>
+      <a href="./" class="on">06 Blog</a>
+      <a href="../#connect">Connect</a>
+    </div>
+  </div>
+</nav>
+
+<main>
+<header class="blog-hero">
+  <div class="wrap">
+    <p class="kicker"><span class="idx">06</span> WRITING — notes from the workshop</p>
+    <h1>Blog<em>.</em></h1>
+    <p class="intro">Working notes on AI agents in production, travel tech, platform engineering, and the
+      less glamorous parts of building companies. Opinions are mine; mistakes probably are too.</p>
+    <div class="meta">
+      <span><b id="post-count"><!-- COUNT:START -->4<!-- COUNT:END --></b> posts</span>
+      <a href="feed.xml">RSS ↗</a>
+      <a href="mailto:scottp@biztrip.ai">Reply by email ↗</a>
+    </div>
+  </div>
+</header>
+
+<section class="wrap">
+  <div class="posts">
+<!-- POSTS:START -->
+    <a class="post" href="posts/2026-08-21-cloud-agents.html">
+      <div class="when"><b>Aug 21, 2026</b>3 min read</div>
+      <div>
+        <h2>Deploying cloud agents for your team</h2>
+        <p>How to move your dev team to using cloud agents as teammates.</p>
+        <div class="tags"><span class="tag">meta</span><span class="tag">ai-agents</span><span class="tag">startups</span></div>
+      </div>
+      <span class="arr">Read ↗</span>
+    </a>
+    <a class="post" href="posts/2025-08-19-leveraging-language-understanding-in-your-ai-agent.html">
+      <div class="when"><b>Aug 19, 2025</b>3 min read</div>
+      <div>
+        <h2>Leveraging the Language Understanding in Your AI Agent</h2>
+        <p>Tool calling isn&#x27;t the only way to give an agent capabilities. Two techniques — code generation and text-to-SQL — that lean on the LLM&#x27;s language understanding instead.</p>
+        <div class="tags"><span class="tag">ai-agents</span><span class="tag">llm</span><span class="tag">mcp</span><span class="tag">biztrip</span></div>
+      </div>
+      <span class="arr">Read ↗</span>
+    </a>
+    <a class="post" href="posts/2024-06-18-what-is-an-ai-agent.html">
+      <div class="when"><b>Jun 18, 2024</b>2 min read</div>
+      <div>
+        <h2>What Is an AI Agent?</h2>
+        <p>A plain-English explainer of the ReAct pattern — plan, act, observe — and why it turns a text-completion model into a semi-autonomous agent.</p>
+        <div class="tags"><span class="tag">ai-agents</span><span class="tag">llm</span><span class="tag">explainer</span></div>
+      </div>
+      <span class="arr">Read ↗</span>
+    </a>
+    <a class="post" href="posts/2023-03-15-the-lies-we-tell-ourselves-in-engineering.html">
+      <div class="when"><b>Mar 15, 2023</b>5 min read</div>
+      <div>
+        <h2>The Lies We Tell Ourselves in Engineering</h2>
+        <p>Three convenient untruths engineering teams rely on for optimism: the estimate, the end-of-quarter ship, and the blank-slate quarter.</p>
+        <div class="tags"><span class="tag">engineering-management</span><span class="tag">planning</span><span class="tag">tatari</span></div>
+      </div>
+      <span class="arr">Read ↗</span>
+    </a>
+<!-- POSTS:END -->
+  </div>
+</section>
+</main>
+
+<footer>
+  <p>© 2026 Scott Persinger — <a href="../">scottpersinger.com</a></p>
+</footer>
+
+<script>
+  const bar = document.getElementById('progress');
+  addEventListener('scroll', () => {
+    const h = document.documentElement;
+    bar.style.width = (h.scrollTop / (h.scrollHeight - h.clientHeight) * 100) + '%';
+  }, {passive:true});
+</script>
+</body>
+</html>

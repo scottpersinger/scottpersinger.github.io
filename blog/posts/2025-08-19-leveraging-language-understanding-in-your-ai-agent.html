@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<!-- ===== EDIT THESE ===== -->
+<title>Leveraging the Language Understanding in Your AI Agent — Scott Persinger</title>
+<meta name="description" content="Tool calling isn&#39;t the only way to give an agent capabilities. Two techniques — code generation and text-to-SQL — that lean on the LLM&#39;s language understanding instead." />
+<meta name="date" content="2025-08-19" />
+<meta name="tags" content="ai-agents, llm, mcp, biztrip" />
+<!-- ====================== -->
+<meta property="og:type" content="article" />
+<meta property="og:title" content="Leveraging the Language Understanding in Your AI Agent" />
+<meta property="og:description" content="Tool calling isn&#39;t the only way to give an agent capabilities. Two techniques — code generation and text-to-SQL — that lean on the LLM&#39;s language understanding instead." />
+<meta property="og:image" content="https://scottpersinger.com/images/scott_profile.jpg" />
+<link rel="alternate" type="application/rss+xml" title="Scott Persinger — Blog" href="../feed.xml" />
+<link rel="stylesheet" href="../blog.css" />
+</head>
+<body>
+<div id="progress"></div>
+<nav>
+  <div class="wrap">
+    <a class="brand" href="../../">SCOTT<em>_</em>PERSINGER</a>
+    <div class="links">
+      <a href="../../">← Portfolio</a>
+      <a href="../" class="on">06 Blog</a>
+      <a href="../../#connect">Connect</a>
+    </div>
+  </div>
+</nav>
+
+<main>
+<article class="essay">
+  <div class="wrap">
+    <div class="head">
+      <p class="crumbs"><a href="../../">Home</a><span class="sep">/</span><a href="../">Blog</a><span class="sep">/</span><span data-date></span></p>
+      <h1>Leveraging the <em>Language</em> Understanding in Your AI Agent</h1>
+      <p class="deck">Don&#39;t buy the MCP hype. Function calling is one way to extend your agent — but your LLM understands <em>language</em>, and that opens up better ones.</p>
+      <div class="byline">
+        <img src="../../images/scott_profile.jpg" alt="" />
+        <span><b>Scott Persinger</b></span><span class="dot">·</span>
+        <span data-date></span><span class="dot">·</span>
+        <span id="rt"></span>
+      </div>
+    </div>
+
+    <div class="prose">
+      <p>Most people building AI Agents are familiar with traditional "tool calling". This is where we describe a function, via its name and parameters, to the LLM powering our agent, and ask the agent to "invoke" this function when it needs some information or capability. The LLM actually just generates a text block that requests the function to be invoked. Then our agent framework actually calls the function and injects the result back into the LLM's context.</p>
+
+      <p>This works well, and the MCP (Model Context Protocol) system has created an ecosystem of thousands of "tools" that our agent can use to do useful work. Tool calling is very attractive because it fits our human understanding of how to do <em>imperative programming</em>.</p>
+
+      <p>But function calling is pretty limited, and in particular the ability for your LLM to generate <em>input parameters</em> to your function is inherently limited. If we go back and think about the <em>language understanding</em> of our LLM we can come up with some other approaches for accessing information.</p>
+
+      <h2>Writing Code</h2>
+
+      <p>One thing that current frontier LLMs excel at is writing code. In fact some researchers have shown that using LLMs to <em>write function calls via code generation</em> is more effective than using tool calling directly. Observing this, Hugging Face built <strong>CodeAgent</strong> into their smolagents library as a first-class citizen. Here is an example of using CodeAgent with a web-browsing tool:</p>
+
+      <pre><code>import os
+from smolagents import CodeAgent, WebSearchTool, InferenceClientModel
+from smolagents import LiteLLMModel
+
+model = LiteLLMModel(
+    model_id="openai/gpt-4o-mini",
+    temperature=0.2,
+    api_key=os.environ["OPENAI_API_KEY"]
+)
+
+agent = CodeAgent(tools=[WebSearchTool()], model=model, stream_outputs=True)
+agent.run("What is the latest news about the Premier League?")</code></pre>
+
+      <p>and we can observe the code generation when we run the agent:</p>
+
+      <pre><code>(sa) (base) scottp@MacBook-Air-76 sa % python agent.py
+╭─────────────────────────── New run ───────────────────────────╮
+│                                                               │
+│ What is the latest news about the Premier League?             │
+│                                                               │
+╰─ LiteLLMModel - openai/gpt-4o-mini ───────────────────────────╯
+━━━━━━━━━━━━━━━━━━━━━━━━━━━ Step 1 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Thought: To find the latest news about the Premier League, I will
+perform a web search using the query "latest news Premier League".
+This should provide me with the most recent articles and updates
+regarding the league.
+─ Executing parsed code: ───────────────────────────────────────
+  latest_news = web_search(query="latest news Premier League")
+  print(latest_news)
+────────────────────────────────────────────────────────────────
+Execution logs:
+## Search Results
+
+[Premier League News - Latest News &amp; Highlights - Sky Sports]
+(https://www.skysports.com/premier-league-news)
+Get the latest Premier League Football news, fixtures, results,
+video and more from Sky Sports.
+
+[Premier League Football - Latest news, results, stats &amp; transfers - BBC]
+(https://www.bbc.com/sport/football/premier-league)
+The home of Premier League on BBC Sport online. Includes the latest
+news stories, results, fixtures, video and audio.</code></pre>
+
+      <p>This is pretty cool! I am a little skeptical that code generation performs better than tool calling as a general matter. And from playing with CodeAgent I find that it regularly generates code blocks which fail. Plus obviously there is some high security concern with running LLM-generated code without reviewing it, although for this purpose Hugging Face supports sandboxed code execution.</p>
+
+      <h2>Using Text to SQL</h2>
+
+      <p>One of the techniques we've been using with a lot of success at <a href="https://biztrip.ai" target="_blank" rel="noopener">biztrip.ai</a> is using SQL generation to access structured data. The classic approach to giving your Agent access to enterprise data is to give it some "lookup_info" or "search_for_data" tool. This works fine, but you have to strongly define all of the search patterns that your Agent can use.</p>
+
+      <p>Instead of this, we save enterprise data into a SQL database, and then give our Agent a generic "run_sql_query" command. This leverages the LLM's strong ability to generate SQL queries, and supports a huge range of data access patterns. The Agent can synthesize very exact filtering, fuzzy string matches, geo-based queries, and even extract "analytic" results by using aggregate functions, min/max, etc.</p>
+
+      <p>We have been using DuckDB (<a href="https://motherduck.com/" target="_blank" rel="noopener">motherduck.com</a>) as a data store because it is very lightweight, supports very expressive SQL, and our LLM "knows" its well-designed and well-documented syntax very well. (Contrast this with <a href="https://clickhouse.com/" target="_blank" rel="noopener">ClickHouse</a>, which is an amazing data store but much less well known to the LLM.) You can even create DuckDB tables solely in memory and let your Agent query them directly from there.</p>
+
+      <p>These are just two examples of using the <strong>language</strong> part of your LLM more effectively to create smarter agents. In a future post we will talk about <em>vector search for everything</em> as a way to leverage LLM architecture to achieve very advanced results.</p>
+
+      <hr>
+      <p class="origin">Originally published on <a href="https://www.linkedin.com/pulse/leveraging-language-understanding-your-ai-agent-scott-persinger-ivrqc" target="_blank" rel="noopener">LinkedIn</a>.</p>
+    </div>
+
+    <div class="foot">
+      <div class="tags" data-tags></div>
+      <a class="btn line" href="../">← All posts</a>
+    </div>
+
+    <div class="author">
+      <img src="../../images/scott_profile.jpg" alt="Scott Persinger" />
+      <div>
+        <h4>Scott Persinger</h4>
+        <p>Co-founder &amp; CTO at <a href="https://biztrip.ai" target="_blank" rel="noopener">BizTrip.ai</a>. Four-time founder, two acquisitions, 25+ years shipping platforms, payments, and AI agents.
+          <a href="mailto:scottp@biztrip.ai">Email</a> · <a href="https://www.linkedin.com/in/scottpersinger/" target="_blank" rel="noopener">LinkedIn</a> · <a href="https://github.com/scottpersinger" target="_blank" rel="noopener">GitHub</a></p>
+      </div>
+    </div>
+  </div>
+</article>
+</main>
+
+<footer>
+  <p>© 2026 Scott Persinger — <a href="../../">scottpersinger.com</a></p>
+</footer>
+
+<script>
+  // scroll progress
+  const bar = document.getElementById('progress');
+  addEventListener('scroll', () => {
+    const h = document.documentElement;
+    bar.style.width = (h.scrollTop / (h.scrollHeight - h.clientHeight) * 100) + '%';
+  }, {passive:true});
+
+  // date, reading time, tags — all derived from the <meta> tags above
+  const meta = n => (document.querySelector(`meta[name="${n}"]`) || {}).content || '';
+  const d = new Date(meta('date') + 'T12:00:00');
+  const pretty = d.toLocaleDateString('en-US', {year:'numeric', month:'short', day:'numeric'});
+  document.querySelectorAll('[data-date]').forEach(el => el.textContent = pretty);
+  const words = document.querySelector('.prose').textContent.trim().split(/\s+/).length;
+  document.getElementById('rt').textContent = Math.max(1, Math.round(words / 220)) + ' min read';
+  const tags = meta('tags').split(',').map(s => s.trim()).filter(Boolean);
+  document.querySelector('[data-tags]').innerHTML = tags.map(t => `<span class="tag">${t}</span>`).join('');
+</script>
+</body>
+</html>

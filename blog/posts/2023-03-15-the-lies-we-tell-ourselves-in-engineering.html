@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<!-- ===== EDIT THESE ===== -->
+<title>The Lies We Tell Ourselves in Engineering — Scott Persinger</title>
+<meta name="description" content="Three convenient untruths engineering teams rely on for optimism: the estimate, the end-of-quarter ship, and the blank-slate quarter." />
+<meta name="date" content="2023-03-15" />
+<meta name="tags" content="engineering-management, planning, tatari" />
+<!-- ====================== -->
+<meta property="og:type" content="article" />
+<meta property="og:title" content="The Lies We Tell Ourselves in Engineering" />
+<meta property="og:description" content="Three convenient untruths engineering teams rely on for optimism: the estimate, the end-of-quarter ship, and the blank-slate quarter." />
+<meta property="og:image" content="https://scottpersinger.com/images/scott_profile.jpg" />
+<link rel="alternate" type="application/rss+xml" title="Scott Persinger — Blog" href="../feed.xml" />
+<link rel="stylesheet" href="../blog.css" />
+</head>
+<body>
+<div id="progress"></div>
+<nav>
+  <div class="wrap">
+    <a class="brand" href="../../">SCOTT<em>_</em>PERSINGER</a>
+    <div class="links">
+      <a href="../../">← Portfolio</a>
+      <a href="../" class="on">06 Blog</a>
+      <a href="../../#connect">Connect</a>
+    </div>
+  </div>
+</nav>
+
+<main>
+<article class="essay">
+  <div class="wrap">
+    <div class="head">
+      <p class="crumbs"><a href="../../">Home</a><span class="sep">/</span><a href="../">Blog</a><span class="sep">/</span><span data-date></span></p>
+      <h1>The Lies We Tell Ourselves in Engineering</h1>
+      <p class="deck">Good engineers are natural optimists. But some of that optimism rests on fictions we all agree not to examine too closely.</p>
+      <div class="byline">
+        <img src="../../images/scott_profile.jpg" alt="" />
+        <span><b>Scott Persinger</b></span><span class="dot">·</span>
+        <span data-date></span><span class="dot">·</span>
+        <span id="rt"></span>
+      </div>
+    </div>
+
+    <div class="prose">
+      <p>In my experience, good engineers are natural optimists (Stripe used to have an <em>operating principle</em> "Stripe is for optimists" that encouraged this). It is damn hard to realize a new idea in software, test it properly, and make it work under stress. Having a lot of natural optimism helps you push through the hard work without getting discouraged.</p>
+
+      <p>But lately I've been musing about some of the common and convenient untruths that we may rely on for this optimism. Can we get beyond these "coping mechanisms" or are they intrinsic to the work?</p>
+
+      <h2>"This will take N weeks to build"</h2>
+
+      <p>This is the most common lie we rely on daily. The idea that we can even roughly estimate how long it will take to build a feature or new system. The truth is, if we are moving fast enough then often we don't even know exactly what we are trying to build. The whole point of "agile" is to discover the full and critical requirements iteratively over time. But no, we eyeball a project, SWAG an estimate, and some manager doubles our estimate to get the final number. Then we roll up all the estimates and decide if we have "enough" resources to get through the quarter! Realizing the difficulty of "estimation" as a task we add "Gets better at making estimates!" to our performance ladder.</p>
+
+      <p>It's hard to imagine how we could effectively operate otherwise. <strong>Not</strong> giving any estimates means no dates or expectations for how long a project might take. How is anyone supposed to plan if there are no schedules? How do we balance an aspiration towards lofty goals with the desire for a realistic plan?</p>
+
+      <p>I like the innovative thinking that <a href="https://m.signalvnoise.com/how-we-structure-our-work-and-teams-at-basecamp/" target="_blank" rel="noopener">Basecamp</a> has done around scheduling and planning. They basically just run a 6-week sprint and make almost everything fit into that bucket. Rather than ask "How long will feature X take to build?" they invert the exercise and ask "How much of feature X can we build in 6 weeks?" I think this gets effectively at the idea that scope and time are almost equally unknown at the start of a project, so it may be easier to just constrain your time variable.</p>
+
+      <p>In my own experience I have developed a toolbox of imperfect tools for this problem:</p>
+
+      <ul>
+        <li>Break things down into smaller pieces as much as possible.</li>
+        <li>Avoid fixed deadlines whenever possible. "Sometime in month X" is about the most time resolution you should expect to get.</li>
+        <li>Optimize for <em>throughput</em> instead of <em>predictability</em>. Better (and easier) to ship small, often and fast than to hit the deadline on one huge project.</li>
+        <li>Be explicit and specific about the scope vs. time trade-offs you are making on each project.</li>
+      </ul>
+
+      <h2>"We're gonna ship this by the end of the quarter!"</h2>
+
+      <p>Humans need deadlines. This is the core counterargument to "let's do all agile dev with no deadlines". People need deadlines to organize their effort and often to force the reasonable trade-offs that we might otherwise neglect in favor of "getting it perfect". Unfortunately whatever your planning cycle is (typically quarterly) will create a natural deadline at the end of each cycle. And your system will easily trend to delivering <em>everything</em> at that deadline.</p>
+
+      <p>When I see this happening on teams, my first, optimistic, reaction is "Better to ship it all end of quarter than to <strong>miss</strong> the deadline!" But the truth is that this points to poor planning, and poor division of work into smaller chunks. I try to look at the plan each quarter and make sure that teams are planning to deliver chunks of work in months 1 and 2, not just in month 3. The best teams and managers know they need to generate their own urgency around smaller deadlines rather than "fall back" to the planning boundary.</p>
+
+      <h2>We start each quarter with a blank slate</h2>
+
+      <p>One of my favorite fictions in software development is the "factory" model for planning our work. We plan a set of projects each quarter with the concept that we will start and <strong>finish</strong> the project in that quarter, and that whatever we have built will be "<strong>done</strong>". Like a factory, we will have "shipped" it to the customer and now we can move on to the next thing. But the truth is that building software is NEVER like that! Every time we build something new we have to keep working on it — sometimes <strong>a lot</strong>. Unless we decide to kill the feature and rip out the code, that feature will require some level of ongoing investment forever.</p>
+
+      <p>And yet our planning process is mostly ignorant of this basic fact. It's only up to good intentions and best practice for teams to surface "fast follow" and "tech debt" projects that visibly surface all this additional work into the planning process. And forget about any multi-quarter project plan or roadmap. You think we have <strong>any idea</strong> what kind of ongoing work will be required for a feature that we haven't even built yet?</p>
+
+      <p>My observation is that features + code follow a typical lifecycle. There is intense development and enhancement in the early life of any feature, followed by a declining level of maintenance effort as the feature matures. Eventually the code matures and you usually get like 12–18 months of stability where that feature may require very little effort to maintain. But after this your feature starts to break! APIs get deprecated, dependent systems change, or scale demands outstrip the capacity of the original implementation. And now you have the "tech debt / re-architecture" part of the feature lifecycle where suddenly you have to invest work to re-build something you already built once.</p>
+
+      <p>I have been working with my teams to try to encode this "lifecycle model" into our planning process. Any project that is building a <strong>new capability</strong> will likely require intense effort <strong>this</strong> quarter AND <strong>next</strong> quarter. Projects from prior quarters should have declining but non-zero investment demands. And ideally we would be surveying the things we built 18–24 months prior and asking whether it's time to schedule their replacement. So far we have found that traditional planning is already quite difficult, and so trying to incorporate this new model adds a good bit of complexity. Maybe lying to ourselves is easier...</p>
+
+      <hr>
+      <p class="origin">Originally published on <a href="https://www.linkedin.com/pulse/lies-we-tell-ourselves-engineering-scott-persinger" target="_blank" rel="noopener">LinkedIn</a>.</p>
+    </div>
+
+    <div class="foot">
+      <div class="tags" data-tags></div>
+      <a class="btn line" href="../">← All posts</a>
+    </div>
+
+    <div class="author">
+      <img src="../../images/scott_profile.jpg" alt="Scott Persinger" />
+      <div>
+        <h4>Scott Persinger</h4>
+        <p>Co-founder &amp; CTO at <a href="https://biztrip.ai" target="_blank" rel="noopener">BizTrip.ai</a>. Four-time founder, two acquisitions, 25+ years shipping platforms, payments, and AI agents.
+          <a href="mailto:scottp@biztrip.ai">Email</a> · <a href="https://www.linkedin.com/in/scottpersinger/" target="_blank" rel="noopener">LinkedIn</a> · <a href="https://github.com/scottpersinger" target="_blank" rel="noopener">GitHub</a></p>
+      </div>
+    </div>
+  </div>
+</article>
+</main>
+
+<footer>
+  <p>© 2026 Scott Persinger — <a href="../../">scottpersinger.com</a></p>
+</footer>
+
+<script>
+  // scroll progress
+  const bar = document.getElementById('progress');
+  addEventListener('scroll', () => {
+    const h = document.documentElement;
+    bar.style.width = (h.scrollTop / (h.scrollHeight - h.clientHeight) * 100) + '%';
+  }, {passive:true});
+
+  // date, reading time, tags — all derived from the <meta> tags above
+  const meta = n => (document.querySelector(`meta[name="${n}"]`) || {}).content || '';
+  const d = new Date(meta('date') + 'T12:00:00');
+  const pretty = d.toLocaleDateString('en-US', {year:'numeric', month:'short', day:'numeric'});
+  document.querySelectorAll('[data-date]').forEach(el => el.textContent = pretty);
+  const words = document.querySelector('.prose').textContent.trim().split(/\s+/).length;
+  document.getElementById('rt').textContent = Math.max(1, Math.round(words / 220)) + ' min read';
+  const tags = meta('tags').split(',').map(s => s.trim()).filter(Boolean);
+  document.querySelector('[data-tags]').innerHTML = tags.map(t => `<span class="tag">${t}</span>`).join('');
+</script>
+</body>
+</html>
