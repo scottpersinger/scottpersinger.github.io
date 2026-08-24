@@ -67,11 +67,19 @@
   .btn.solid{background:var(--ink);color:var(--paper);}
   .btn.solid:hover{background:var(--verm);border-color:var(--verm);transform:translateY(-2px);}
   .btn.line:hover{background:var(--ink);color:var(--paper);transform:translateY(-2px);}
-  .stamp{position:absolute;right:36px;top:110px;width:132px;height:132px;animation:spin 22s linear infinite;opacity:.9;}
-  @keyframes spin{to{transform:rotate(360deg);}}
-  .stamp text{font-family:var(--mono);font-size:11.4px;letter-spacing:.22em;fill:var(--ink-soft);text-transform:uppercase;}
-  .stamp .core{fill:var(--verm);}
-  @media(max-width:900px){.stamp{display:none;}}
+  /* latest-from-the-blog side panel (upper right of hero) */
+  .hero .wrap{position:relative;}
+  .latest{position:absolute;top:4px;right:28px;width:270px;background:#fff;border:1px solid var(--line-dark);border-radius:16px;padding:18px 20px 14px;box-shadow:0 14px 40px -28px rgba(22,19,14,.35);}
+  .latest h3{font-family:var(--mono);font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-soft);margin-bottom:6px;}
+  .latest h3 em{font-style:normal;color:var(--verm);}
+  .latest .lp{display:block;padding:11px 0;border-top:1px solid var(--line);}
+  .latest .lp:first-of-type{border-top:none;}
+  .latest .lp .d{display:block;font-family:var(--mono);font-size:11px;color:var(--faint);letter-spacing:.05em;text-transform:uppercase;}
+  .latest .lp .t{display:block;font-size:14.5px;font-weight:750;letter-spacing:-.01em;line-height:1.3;margin-top:3px;transition:.16s;}
+  .latest .lp:hover .t{color:var(--verm);}
+  .latest .all{display:block;padding:12px 0 4px;border-top:1px solid var(--line);font-family:var(--mono);font-size:12px;font-weight:700;color:var(--ink-soft);transition:.16s;}
+  .latest .all:hover{color:var(--verm);}
+  @media(max-width:1000px){.latest{display:none;}}
 
   /* stat counters */
   .stats{border-top:2px solid var(--ink);border-bottom:1px solid var(--line-dark);display:grid;grid-template-columns:repeat(4,1fr);}
@@ -218,6 +226,15 @@
 <header class="hero">
   <div class="wrap">
     <p class="kicker"><span class="live"></span> CURRENTLY — <b>Co-founder &amp; CTO @ BizTrip.ai</b> · San Francisco, CA</p>
+    <aside class="latest" aria-label="Latest from the blog">
+      <h3><em>//</em> Latest writing</h3>
+<!-- LATEST:START -->
+        <a class="lp" href="blog/posts/2026-08-21-cloud-agents.html"><span class="d">Aug 21, 2026</span><span class="t">Deploying cloud agents for your team</span></a>
+        <a class="lp" href="blog/posts/2025-08-19-leveraging-language-understanding-in-your-ai-agent.html"><span class="d">Aug 19, 2025</span><span class="t">Leveraging the Language Understanding in Your AI Agent</span></a>
+        <a class="lp" href="blog/posts/2024-06-18-what-is-an-ai-agent.html"><span class="d">Jun 18, 2024</span><span class="t">What Is an AI Agent?</span></a>
+<!-- LATEST:END -->
+      <a class="all" href="blog/">All posts →</a>
+    </aside>
     <h1>
       <span class="row"><span>Scott</span></span>
       <span class="row"><span>Persinger</span></span>
@@ -233,11 +250,6 @@
       <a class="btn solid" href="#projects">View the work ↓</a>
       <a class="btn line" href="mailto:scottp@biztrip.ai">Get in touch</a>
     </div>
-    <svg class="stamp" viewBox="0 0 132 132">
-      <defs><path id="circ" d="M66,66 m-52,0 a52,52 0 1,1 104,0 a52,52 0 1,1 -104,0"/></defs>
-      <circle cx="66" cy="66" r="7" class="core"/>
-      <text><textPath href="#circ">EST. 2000 · SF BAY AREA · FOUNDER × 4 · ENGINEER ·</textPath></text>
-    </svg>
   </div>
 
   <div class="wrap">

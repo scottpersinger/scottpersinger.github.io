@@ -150,6 +150,17 @@ def main():
     text = replace_between(text, "<!-- COUNT:START -->", "<!-- COUNT:END -->", str(len(posts)))
     idx.write_text(text, encoding="utf-8")
 
+    # ---- homepage "latest writing" panel ----
+    home = BLOG.parent / "index.html"
+    htext = home.read_text(encoding="utf-8")
+    if "<!-- LATEST:START -->" in htext:
+        items = "".join(
+            f'\n        <a class="lp" href="blog/posts/{p["file"]}">'
+            f'<span class="d">{p["date"].strftime("%b %d, %Y")}</span>'
+            f'<span class="t">{html.escape(p["title"])}</span></a>'
+            for p in posts[:3]) + "\n"
+        home.write_text(replace_between(htext, "<!-- LATEST:START -->", "<!-- LATEST:END -->", items), encoding="utf-8")
+
     # ---- feed.xml ----
     now = format_datetime(datetime.now(timezone.utc))
     entries = []
