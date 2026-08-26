@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<!-- GENERATED from posts/2026-08-24-building-your-software-factory.md by build.py — edit the .md, not this file -->
+<title>Building your software factory — Scott Persinger</title>
+<meta name="description" content="How I assembled three specialized agents into a software factory that turns feature requests into shipped code." />
+<meta name="date" content="2026-08-24" />
+<meta name="tags" content="ai-agents, software-development, flow" />
+<meta property="og:type" content="article" />
+<meta property="og:title" content="Building your software factory" />
+<meta property="og:description" content="How I assembled three specialized agents into a software factory that turns feature requests into shipped code." />
+<meta property="og:image" content="https://scottpersinger.com/images/scott_profile.jpg" />
+<link rel="alternate" type="application/rss+xml" title="Scott Persinger — Blog" href="../feed.xml" />
+<link rel="stylesheet" href="../blog.css" />
+</head>
+<body>
+<div id="progress"></div>
+<nav>
+  <div class="wrap">
+    <a class="brand" href="../../">SCOTT<em>_</em>PERSINGER</a>
+    <div class="links">
+      <a href="../../">← Portfolio</a>
+      <a href="../" class="on">06 Blog</a>
+      <a href="../../#connect">Connect</a>
+    </div>
+  </div>
+</nav>
+
+<main>
+<article class="essay">
+  <div class="wrap">
+    <div class="head">
+      <p class="crumbs"><a href="../../">Home</a><span class="sep">/</span><a href="../">Blog</a><span class="sep">/</span><span data-date></span></p>
+      <h1>Building your software factory</h1>
+      <p class="deck">A PM agent, a builder, and a merge agent now handle most of my software development lifecycle inside a Flow workspace.</p>
+      <div class="byline">
+        <img src="../../images/scott_profile.jpg" alt="" />
+        <span><b>Scott Persinger</b></span><span class="dot">·</span>
+        <span data-date></span><span class="dot">·</span>
+        <span id="rt"></span>
+      </div>
+    </div>
+
+    <div class="prose">
+<p>This weekend I built my first software factory. I started simple, using my OSS
+<a href="https://github.com/freeflow-community/flow">Flow</a> project as the test bed, to assemble a
+team of agents that covers my entire software development lifecycle:</p>
+<ul>
+<li><strong>Prism</strong>, my <strong>PM</strong> agent, is my primary interface. It specs features and bugs, writes them as tasks to GitHub, and passes the work to the Builder.</li>
+<li>The <strong>Builder</strong> agent does the coding and tests the results. When a task is complete and tested, it hands the work back to the PM.</li>
+<li><strong>Prism</strong> verifies the resulting PR, then hands it to the <strong>Merge</strong> agent, which merges it, fixes any conflicts, and deploys the right updated components: the web backend, native clients, and npm packages.</li>
+</ul>
+<figure>
+  <img src="../../images/blog-software-factory-hero.jpg" alt="Factory agent pipeline documentation showing the Prism, Builder, and Merger agents and their roles" />
+  <figcaption>The factory pipeline: three specialized agents turn requests into shipped code.</figcaption>
+</figure>
+
+<p>I invited all three agents into the same <code>#factory</code> channel in my workspace. Now my Flow
+development process looks like this:</p>
+<ol>
+<li>I discuss an issue or feature I&rsquo;d like to build with <strong>Prism</strong>. When we agree on the approach, it writes a ticket and asks, &ldquo;Shall we build it?&rdquo;</li>
+<li>I say &ldquo;yes,&rdquo; and Prism messages Builder to start: <code>@Builder please build ticket 342</code>.</li>
+<li>Builder opens a new channel (<code>task-425</code>), invites me and Prism to the channel, and starts working on the ticket.</li>
+</ol>
+<figure>
+  <img src="../../images/blog-software-factory-team.jpg" alt="The Flow factory channel where Prism and Builder coordinate pull requests and reviews" />
+  <figcaption>Prism, Builder, and Merger coordinate in the shared factory channel.</figcaption>
+</figure>
+
+<p>All the real work happens in the task channel. The agent may stop and ask me questions or
+require my input, but most of the time it finishes the task on its own, including posting
+screenshots and architecture decisions to the channel.</p>
+<figure>
+  <img src="../../images/blog-software-factory-task-channel.jpg" alt="A Flow task channel where Builder reports each implementation step for a cross-platform feature" />
+  <figcaption>Builder works in the open, reporting implementation, testing, and architecture decisions as it goes.</figcaption>
+</figure>
+
+<p>Once Builder is done and has finished testing, it opens the PR, then calls back to Prism in
+the <code>#factory</code> channel:</p>
+<figure>
+  <img src="../../images/blog-software-factory-builder-handoff.jpg" alt="Builder notifying Prism that a pull request is ready for review" />
+  <figcaption>Builder hands the tested pull request back to Prism for review.</figcaption>
+</figure>
+
+<p>Prism reviews the PR. If it looks good, it tags the Merge agent to merge and deploy. Merge
+does the deployment, and Prism messages me that the work is done:</p>
+<figure>
+  <img src="../../images/blog-software-factory-complete.jpg" alt="Prism and Merger coordinating a pull request merge and reporting successful web, macOS, and iOS deployments" />
+  <figcaption>Merger ships each affected component; Prism reports the completed work back to me.</figcaption>
+</figure>
+
+<p>Using &ldquo;separation of concerns&rdquo; for these agents has some distinct benefits. I have the <strong>PM
+(Prism)</strong> agent using <strong>Fable</strong> for advanced reasoning, while Builder is just using <strong>Opus</strong>.
+I plan to add instructions to the PM to route work to two different Builder agents, so I can
+have a &ldquo;complex builder&rdquo; that also runs Fable.</p>
+<p>Each agent also has bespoke instructions and memory, so I don&rsquo;t have to reason about providing
+all the rules and constraints in one huge <code>CLAUDE.md</code> file.</p>
+<h2>The agent ping-pong problem</h2>
+<p>One issue I ran into early was that the agents could easily get into a &ldquo;conversation loop&rdquo; and
+never stop:</p>
+<figure>
+  <img src="../../images/blog-software-factory-agent-loop.jpg" alt="Prism and Builder repeatedly replying with No response requested and Silent in a conversation loop" />
+  <figcaption>Without conversation discipline, agents can acknowledge each other forever.</figcaption>
+</figure>
+
+<p>That makes sense when you realize that our agentic coding models are trained to always respond
+to any request—even if the response is &ldquo;I don&rsquo;t have anything to say!&rdquo;</p>
+<p>I worked up a set of &ldquo;conversation discipline&rdquo; behavior rules that makes the agents much
+smarter about discerning which messages they need to respond to. I expect newer LLMs are
+probably being post-trained as we speak to better understand multi-party discussions.</p>
+<h2>The takeaway</h2>
+<p>I am fully convinced that this <strong>is</strong> the near future of software development. The Flow app
+handles 90% of the functionality I use in Slack and supports agents much better than native
+Slack does. And yet I have never read a single one of the 97,000 lines of code in the repo.</p>
+<p>I still have to manually test many features, and I request fixes or revisions probably 30% of
+the time. Testing and verification aren&rsquo;t perfect, and I am still managing the evolution of
+the app. But as an existence proof for the viability of the &ldquo;software factory,&rdquo; the results
+are pretty astounding.</p>
+<p>Because the agents live in a Flow workspace, anyone can join the workspace and interact with
+the factory to build features or fixes for the app. Managing work in progress is crude right
+now, but I have a Kanban-board approach in mind that should make it better.</p>
+<p>You can check out the <a href="https://github.com/freeflow-community/factory">agent factory</a> on GitHub.</p>
+    </div>
+
+    <div class="foot">
+      <div class="tags" data-tags></div>
+      <a class="btn line" href="../">← All posts</a>
+    </div>
+
+    <div class="author">
+      <img src="../../images/scott_profile.jpg" alt="Scott Persinger" />
+      <div>
+        <h4>Scott Persinger</h4>
+        <p>Co-founder &amp; CTO at <a href="https://biztrip.ai" target="_blank" rel="noopener">BizTrip.ai</a>. Four-time founder, two acquisitions, 25+ years shipping platforms, payments, and AI agents.
+          <a href="mailto:scottp@biztrip.ai">Email</a> · <a href="https://www.linkedin.com/in/scottpersinger/" target="_blank" rel="noopener">LinkedIn</a> · <a href="https://github.com/scottpersinger" target="_blank" rel="noopener">GitHub</a></p>
+      </div>
+    </div>
+  </div>
+</article>
+</main>
+
+<footer>
+  <p>© 2026 Scott Persinger — <a href="../../">scottpersinger.com</a></p>
+</footer>
+
+<script>
+  // scroll progress
+  const bar = document.getElementById('progress');
+  addEventListener('scroll', () => {
+    const h = document.documentElement;
+    bar.style.width = (h.scrollTop / (h.scrollHeight - h.clientHeight) * 100) + '%';
+  }, {passive:true});
+
+  // date, reading time, tags — all derived from the <meta> tags above
+  const meta = n => (document.querySelector(`meta[name="${n}"]`) || {}).content || '';
+  const d = new Date(meta('date') + 'T12:00:00');
+  const pretty = d.toLocaleDateString('en-US', {year:'numeric', month:'short', day:'numeric'});
+  document.querySelectorAll('[data-date]').forEach(el => el.textContent = pretty);
+  const words = document.querySelector('.prose').textContent.trim().split(/\s+/).length;
+  document.getElementById('rt').textContent = Math.max(1, Math.round(words / 220)) + ' min read';
+  const tags = meta('tags').split(',').map(s => s.trim()).filter(Boolean);
+  document.querySelector('[data-tags]').innerHTML = tags.map(t => `<span class="tag">${t}</span>`).join('');
+</script>
+</body>
+</html>
