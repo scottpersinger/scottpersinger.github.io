@@ -69,7 +69,8 @@
   .btn.line:hover{background:var(--ink);color:var(--paper);transform:translateY(-2px);}
   /* latest-from-the-blog side panel (upper right of hero) */
   .hero .wrap{position:relative;}
-  .latest{position:absolute;top:4px;right:28px;width:270px;background:#fff;border:1px solid var(--line-dark);border-radius:16px;padding:18px 20px 14px;box-shadow:0 14px 40px -28px rgba(22,19,14,.35);}
+  .hero-cards{position:absolute;top:4px;right:28px;width:270px;display:flex;flex-direction:column;gap:16px;}
+  .latest{background:#fff;border:1px solid var(--line-dark);border-radius:16px;padding:18px 20px 14px;box-shadow:0 14px 40px -28px rgba(22,19,14,.35);}
   .latest h3{font-family:var(--mono);font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-soft);margin-bottom:6px;}
   .latest h3 em{font-style:normal;color:var(--verm);}
   .latest .lp{display:block;padding:11px 0;border-top:1px solid var(--line);}
@@ -79,7 +80,7 @@
   .latest .lp:hover .t{color:var(--verm);}
   .latest .all{display:block;padding:12px 0 4px;border-top:1px solid var(--line);font-family:var(--mono);font-size:12px;font-weight:700;color:var(--ink-soft);transition:.16s;}
   .latest .all:hover{color:var(--verm);}
-  @media(max-width:1000px){.latest{display:none;}}
+  @media(max-width:1000px){.hero-cards{display:none;}}
 
   /* stat counters */
   .stats{border-top:2px solid var(--ink);border-bottom:1px solid var(--line-dark);display:grid;grid-template-columns:repeat(4,1fr);}
@@ -226,6 +227,7 @@
 <header class="hero">
   <div class="wrap">
     <p class="kicker"><span class="live"></span> CURRENTLY — <b>Co-founder &amp; CTO @ BizTrip.ai</b> · San Francisco, CA</p>
+    <div class="hero-cards">
     <aside class="latest" aria-label="Latest from the blog">
       <h3><em>//</em> Latest writing</h3>
 <!-- LATEST:START -->
@@ -235,6 +237,14 @@
 <!-- LATEST:END -->
       <a class="all" href="blog/">All posts →</a>
     </aside>
+    <aside class="latest" aria-label="Media appearances">
+      <h3><em>//</em> Media</h3>
+<!-- MEDIA:START -->
+        <a class="lp" href="https://www.linkedin.com/posts/biztripai_more-from-the-podcast-with-vishesh-duggar-activity-7405019756707209216-YeYA" target="_blank" rel="noopener"><span class="d">Podcast</span><span class="t">On leadership &amp; building tech teams — with Vishesh Duggar</span></a>
+        <a class="lp" href="https://www.linkedin.com/posts/scottpersinger_ai-genai-agents-activity-7247254937720504320-rLsL/" target="_blank" rel="noopener"><span class="d">Video</span><span class="t">Multi-agent AI in practice: Supercog's Meeting Prep agent</span></a>
+<!-- MEDIA:END -->
+    </aside>
+    </div>
     <h1>
       <span class="row"><span>Scott</span></span>
       <span class="row"><span>Persinger</span></span>
