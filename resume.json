@@ -1,0 +1,136 @@
+{
+  "$schema": "https://raw.githubusercontent.com/jsonresume/resume-schema/v1.0.0/schema.json",
+  "basics": {
+    "name": "Scott Persinger",
+    "label": "Co-founder & CTO at BizTrip AI · Product and Engineering Leader",
+    "email": "scottpersinger@gmail.com",
+    "phone": "510-708-4560",
+    "url": "https://scottpersinger.com",
+    "summary": "Hands-on product and engineering team leader. I thrive on building new teams, products, and companies that leverage leading edge technology. I've built and shipped multiple products into large enterprises with high security and compliance demands. I look for high growth opportunities that leverage my ability to synthesize product vision, technical leadership, and the ability to ship every day. I have experience leading teams of 5-100, across fintech, ad tech, travel, consumer mobile, B2B SaaS and cloud infrastructure.",
+    "location": {
+      "city": "San Francisco",
+      "region": "CA",
+      "countryCode": "US"
+    },
+    "profiles": [
+      {
+        "network": "LinkedIn",
+        "username": "scottpersinger",
+        "url": "https://www.linkedin.com/in/scottpersinger"
+      },
+      {
+        "network": "GitHub",
+        "username": "scottpersinger",
+        "url": "https://github.com/scottpersinger"
+      },
+      {
+        "network": "X",
+        "username": "persingerscott",
+        "url": "https://x.com/persingerscott"
+      }
+    ]
+  },
+  "work": [
+    {
+      "name": "BizTrip AI",
+      "position": "Co-founder & CTO",
+      "url": "https://biztrip.ai",
+      "startDate": "2025",
+      "summary": "Co-founded BizTrip AI, an AI-powered corporate travel planning platform, with Tom Romary and backing from AI Fund (operated by Andrew Ng, who is listed as a co-founder and invested personally), BAG VC, and RRE Ventures. Built the majority of the product, plus hired and managed a small, expert team. Shipped our initial AI booking tool in 4 months with a team of 3, deployed into production at Moderna (regulated pharma enterprise), now expanding from pilot to org-wide rollout across ~1,000 US employees. I also lead our co-founder technical sales efforts: social marketing, technical selling, pilot definition, scoping, and management.",
+      "highlights": [
+        "Led SOC 2 Type I (Type II in progress) and PCI DSS compliance, including card vaulting for PCI-compliant booking flows, to meet the security bar for regulated enterprise customers including Moderna. Built SSO via Okta, audit logging, and security event logging.",
+        "Designed and built the Agentic travel planner (uses OpenAI and Anthropic models), with an online reflection and memory system that automatically learns user preferences and improves recommendations over time.",
+        "Built a Skills/MCP backend to integrate new data sources (car rentals, on-time performance data, price prediction) and capabilities into the agent; managed the Sabre Corp. business and technical partnership.",
+        "Retooled our development process around cloud agents: moved past the IDE-assistant model to cloud-hosted coding agents that team members dispatch and supervise, including Slack-accessible agents so devs and PMs stay unblocked; standardized shared Skills and custom MCP connectors; kept token costs under $300/month per team member.",
+        "Upleveled the team into a single 'product engineer' shape, collapsing the developer/PM split: every team member owns a product surface end to end, with daily Demo Time; the team ships ~20 PRs per day and the AI-powered process has doubled velocity from year 1.",
+        "Built evals and agentic loops that automate improvement of the product itself: an 'agent trace' evals system as a regression gate over long, complex planning sessions, an automated learning loop that analyzes live traces and drafts/tests improvements, and agentic loops for bug report investigation and planning session analysis."
+      ]
+    },
+    {
+      "name": "Supercog AI",
+      "position": "Founder, Advisor",
+      "url": "https://github.com/supercog-ai",
+      "startDate": "2024-02",
+      "summary": "Founded this AI startup in Feb 2024 to build and explore agent systems. Operated primarily as a research lab as we evolved the technology and explored potential applications. I left daily involvement to build BizTrip AI; the current team is focused on building a services business around enterprise agent adoption.",
+      "highlights": [
+        "Built Agentic (github.com/supercog-ai/agentic), our open-source agent framework, which preceded the frameworks from OpenAI, Anthropic, and Google: a deliberately thin agent loop with multi-model support via LiteLLM, an actor-model runtime built on Ray, a rich event system with human-in-the-loop waits and webhook resumption, automatic context management, dynamic runtime tools, multi-agent teams, RAG, and built-in tracing of threads, tool calls, and completions.",
+        "Co-designed an open agent protocol (github.com/supercog-ai/agent-protocol) for cooperation between agents on different tech stacks: agents as actors exchanging asynchronous event streams (Agent > Thread > Run > Events) over a REST/SSE transport, rather than 'agents as tools' function calls.",
+        "Launched the self-service Supercog agent builder in Fall 2024, months before similar products from the AI labs: a web dashboard (SaaS plus Docker-based local edition and on-prem installer) where users create agents with natural-language instructions and attach tools dynamically, including a 'Tool Builder' agent that creates new capabilities on the fly.",
+        "Shipped a portfolio of working agents and connectors: Deep Research, a browser-automating 'Agent Operator', an automated daily Podcast Producer, a Meeting Notetaker, and a Morning News Reporter; connectors for GitHub, email, web search, screenshots, image recognition, REST APIs, data visualization, and text-to-SQL querying over enterprise data."
+      ]
+    },
+    {
+      "name": "Tatari Inc.",
+      "position": "SVP, Engineering",
+      "url": "https://www.tatari.tv",
+      "startDate": "2019",
+      "endDate": "2024",
+      "summary": "Tatari builds the infrastructure to power TV advertising in the digital era, using big data, advanced analytics and machine learning to automate linear and CTV campaign execution and optimization for hundreds of companies. Grew the engineering org from 18 to over 100. Oversaw all budget (headcount and infrastructure) and delivery for the engineering group, including all product and platform engineering teams, SRE, Security and Support. Collaborated with the CEO and heads of Product, Sales, and Marketing to define and deliver on our technical and product strategy.",
+      "highlights": [
+        "Helped the company grow revenue by 5x (2019-2024).",
+        "Recruited and developed line manager and manager-of-manager leadership levels, including 4 Directors and 8 line managers.",
+        "Hired and managed the early Product team, then helped recruit the current VP of Product; developed an effective matrix between Product and Eng.",
+        "Defined IC and Manager job levels and expectations; created career ladders for engineering ICs and managers and refined the performance management processes.",
+        "Hired and organized effective specialist teams within engineering around SRE, data engineering, ML, security, and support.",
+        "Fostered a high-bar, high velocity, product delivery-focused engineering culture; invested in a metrics-driven management culture (velocity, health, quality, costs) to effectively scale the organization.",
+        "Recruited and grew the data engineering group; sponsored and guided multiple platform migrations to accommodate the explosion of data scale and metrics complexity.",
+        "Recruited the ML engineering team who collaborate with Data Science to build predictive analytics and automated bidding features."
+      ]
+    },
+    {
+      "name": "Stripe",
+      "position": "Manager - Alternative Payment Methods",
+      "url": "https://stripe.com",
+      "startDate": "2017",
+      "endDate": "2019",
+      "summary": "Built a new group at Stripe to extend pay-in services beyond credit cards to all other global payment methods, including ACH, CA EFT, BECS debits, SEPA payments, Alipay and WeChat Pay plus many others. Grew the Alternative Payments business by 3X and expanded the engineering group from 4 to 28 across four locations (SF, Seattle, Dublin, Singapore).",
+      "highlights": [
+        "Built and scaled global pay-in and billing infrastructure processing payments across 15+ methods and multiple regions.",
+        "Held both EM and PM responsibilities for most of my tenure; developed the APM product roadmap with input from Billing, EMEA, APAC and Large User sales stakeholders.",
+        "Launched bank transfer payments in the USA, UK, and Japan, navigating regional regulatory and data-residency requirements for each market.",
+        "Launched support for WeChat Pay and Alipay; managed the partnership and launch of BNPL payments with Klarna.",
+        "Worked with the internal architecture group to improve Stripe's payments architecture so globally distributed teams could build local payment method support.",
+        "Defined a program to measure and surface business and operational metrics across the APM portfolio."
+      ]
+    },
+    {
+      "name": "Salesforce (Heroku)",
+      "position": "Senior Director - Platform Services",
+      "url": "https://www.heroku.com",
+      "startDate": "2013",
+      "endDate": "2017",
+      "summary": "Reporting to the VP Engineering, managed the 50 person platform services group including teams responsible for the primary user facing Heroku components (Dashboard and CLI), the Heroku Add-ons ecosystem and public API, Heroku CI, Heroku Metrics, the Heroku API, the app build pipeline, and the core Heroku control plane. Helped Heroku achieve PCI and HIPAA compliance.",
+      "highlights": [
+        "Emphasized a program to automate collection and reporting of operational metrics; led the group responsible for evolving our microservices architecture.",
+        "Manager - Core Services (2016): owned the Heroku platform API, internal API gateway, and event bus streaming service; doubled the team size and invested heavily in microservice architecture support.",
+        "Manager - Connect Team (2014-2015): hired and managed the team behind Heroku Connect (bi-directional data-synchronization between Salesforce and Heroku apps); grew the product from single digit to hundreds of customers and over $10m annual revenue."
+      ]
+    },
+    {
+      "name": "Cloudconnect.com",
+      "position": "Co-founder",
+      "startDate": "2012",
+      "endDate": "2013",
+      "summary": "Hosted web service for customer data synchronization and marketing automation, co-founded with Adam Gross. Architect and development lead for the Cloudconnect product. Cloudconnect was in the inaugural class at the Heavybit incubator started by James Lindenbaum, and was acquired by Salesforce.com (Heroku subsidiary) in November 2013; the product was relaunched as Heroku Connect."
+    },
+    {
+      "name": "Remixation, Inc.",
+      "position": "Co-founder",
+      "startDate": "2006",
+      "endDate": "2011",
+      "summary": "Lead developer of Showyou, the leading social video application for iPad and iPhone. Launched in April 2010, Showyou achieved immediate press recognition and saw 100k downloads in three months; the backend analyzed video metadata for over 250k videos per day. Remixation was acquired by Vevo.",
+      "highlights": [
+        "Worked with the CEO and design lead to design the product, then led the engineering team on implementation.",
+        "Overall responsibility for application architecture: backend on the Riak data store, 3rd party feed scanner using Node.js, and iOS and web client applications.",
+        "Implemented the 2-dimensional panning video grid using Core Graphics which provided the core application experience; managed the Apple App Store submission and approval process."
+      ]
+    }
+  ],
+  "education": [
+    {
+      "institution": "University of California, Berkeley",
+      "url": "https://www.berkeley.edu",
+      "area": "Computer Science"
+    }
+  ]
+}

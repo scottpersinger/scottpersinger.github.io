@@ -1,0 +1,22 @@
+# Scott Persinger
+
+> Hands-on product and engineering leader in San Francisco. Co-founder & CTO of BizTrip AI (agentic AI for corporate travel, backed by Andrew Ng's AI Fund); founder of Supercog AI; previously SVP Engineering at Tatari, manager of Alternative Payment Methods at Stripe, Senior Director of Platform Services at Heroku/Salesforce, and co-founder of Cloudconnect (acquired by Salesforce) and Remixation (acquired by Vevo). Computer Science, UC Berkeley.
+
+Scott has led teams of 5-100 across fintech, ad tech, travel, consumer mobile, B2B SaaS, and cloud infrastructure. Current focus: agentic AI systems, AI-native development processes built around cloud coding agents, and enterprise-ready AI products (SOC 2, PCI DSS).
+
+## Resume
+
+- [Resume (Markdown)](https://scottpersinger.com/resume.md): Full 2026 resume with detailed employment history and accomplishments
+- [Resume (JSON Resume)](https://scottpersinger.com/resume.json): Machine-readable resume following the JSON Resume v1.0.0 schema
+
+## Profiles
+
+- [LinkedIn](https://www.linkedin.com/in/scottpersinger/): Professional profile, posts, and articles
+- [X (Twitter)](https://x.com/persingerscott): Posts on AI agents, engineering, and startups
+- [GitHub](https://github.com/scottpersinger): Personal open-source work
+- [Supercog AI on GitHub](https://github.com/supercog-ai): Open-source Agentic framework and agent protocol
+
+## Optional
+
+- [Blog](https://scottpersinger.com/blog/): Writing on AI, software engineering, and building companies
+- [Blog RSS feed](https://scottpersinger.com/blog/feed.xml): Subscribe to new posts
