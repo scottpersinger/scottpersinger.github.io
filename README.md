@@ -6,6 +6,7 @@ No framework; the only build step is a small Python script for the blog.
 
 ```
 index.html          ← portfolio homepage (single self-contained page)
+favicon.svg/.ico    ← "sp" icon; apple-touch-icon.png is the iOS home-screen version
 images/             ← logos, project screenshots, profile photo (shared by homepage + blog)
 blog/
   index.html        ← post listing (generated section)
