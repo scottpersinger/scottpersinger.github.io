@@ -54,10 +54,10 @@ Critically, every developer and PM understands the product features we are build
 Since standardizing on our software factory, measured PR delivery velocity has improved by 2.5x. This improvement took 4 months. Our prior evolution from _AI code completion_ --> _AI code review_ also generated a 2.5x velocity improvement, but took us 10 months. Overall the Biztrip team has improved delivery velocity by 6x since we started in April 2025, without significantly growing team headcount.
 
 ## What's next
-The software factory tooling still leaves much to be desired. We have home-grown much of the components, and we designed around our existing human-centric JIRA/Github/Slack workflow. The result still requires too much context switching between tools to manage our work at different levels of detail.
+The software factory tooling still leaves much to be desired. We have home-grown many of the components, and we designed around our existing human-centric JIRA/Github/Slack workflow. The result still requires too much context switching between tools to manage our work at different levels of detail.
 
 Identity and attribution are still sore points, as our agents are not fully represented as autonomous principals in our tools like Slack and Github. Work attribution ("agent X did this work at the behest of user Y") can still be fuzzy and isn't recorded as systematically as we would like.
 
 And the factory itself doesn't always run perfectly - it is possible to get two agents working on the same ticket, although two _people_ filing tickets for the same issue is even more common! 
 
-We are also continuing to find better ways to integrate unit/integration/acceptance/eval testing into an effective testing regime that is still time and token efficient.
+We are also continuing to find better ways to integrate unit / integration / acceptance / eval testing into an effective testing regime that is still time and token efficient.
