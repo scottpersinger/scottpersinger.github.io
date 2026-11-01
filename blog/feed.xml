@@ -6,7 +6,15 @@
   <atom:link href="https://scottpersinger.com/blog/feed.xml" rel="self" type="application/rss+xml" />
   <description>Writing on AI agents, travel tech, platforms, and building startups.</description>
   <language>en-us</language>
-  <lastBuildDate>Wed, 26 Aug 2026 01:41:25 +0000</lastBuildDate>
+  <lastBuildDate>Sun, 01 Nov 2026 00:16:21 +0000</lastBuildDate>
+  <item>
+    <title>The BizTrip software factory</title>
+    <link>https://scottpersinger.com/blog/posts/2026-10-31-the-biztrip-software-factory.html</link>
+    <guid isPermaLink="true">https://scottpersinger.com/blog/posts/2026-10-31-the-biztrip-software-factory.html</guid>
+    <pubDate>Sat, 31 Oct 2026 12:00:00 +0000</pubDate>
+    <description>How we built the software factory that powers Biztrip</description>
+    <category>ai-agents</category><category>software-development</category><category>biztrip</category>
+  </item>
   <item>
     <title>Building your software factory</title>
     <link>https://scottpersinger.com/blog/posts/2026-08-24-building-your-software-factory.html</link>

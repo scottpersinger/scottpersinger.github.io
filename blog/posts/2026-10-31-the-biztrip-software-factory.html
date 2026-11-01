@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<link rel="icon" href="../../favicon.ico" sizes="32x32" />
+<link rel="icon" href="../../favicon.svg" type="image/svg+xml" />
+<link rel="apple-touch-icon" href="../../apple-touch-icon.png" />
+<!-- GENERATED from posts/2026-10-31-the-biztrip-software-factory.md by build.py — edit the .md, not this file -->
+<title>The BizTrip software factory — Scott Persinger</title>
+<meta name="description" content="How we built the software factory that powers Biztrip" />
+<meta name="date" content="2026-10-31" />
+<meta name="tags" content="ai-agents, software-development, biztrip" />
+<meta property="og:type" content="article" />
+<meta property="og:title" content="The BizTrip software factory" />
+<meta property="og:description" content="How we built the software factory that powers Biztrip" />
+<meta property="og:image" content="https://scottpersinger.com/images/scott_profile.jpg" />
+<link rel="alternate" type="application/rss+xml" title="Scott Persinger — Blog" href="../feed.xml" />
+<link rel="stylesheet" href="../blog.css" />
+</head>
+<body>
+<div id="progress"></div>
+<nav>
+  <div class="wrap">
+    <a class="brand" href="../../">SCOTT<em>_</em>PERSINGER</a>
+    <div class="links">
+      <a href="../../">← Portfolio</a>
+      <a href="../" class="on">06 Blog</a>
+      <a href="../../#connect">Connect</a>
+    </div>
+  </div>
+</nav>
+
+<main>
+<article class="essay">
+  <div class="wrap">
+    <div class="head">
+      <p class="crumbs"><a href="../../">Home</a><span class="sep">/</span><a href="../">Blog</a><span class="sep">/</span><span data-date></span></p>
+      <h1>The BizTrip software factory</h1>
+      <p class="deck">How Biztrip delivers software 6x faster with our agentic coding factory.</p>
+      <div class="byline">
+        <img src="../../images/scott_profile.jpg" alt="" />
+        <span><b>Scott Persinger</b></span><span class="dot">·</span>
+        <span data-date></span><span class="dot">·</span>
+        <span id="rt"></span>
+      </div>
+    </div>
+
+    <div class="prose">
+<p>The Biztrip team entered 2026 with most people using Cursor or Claude as their local coding agent. By February we had adopted a <em>cloud agent</em> running Claude, linked into our Slack workspace. By teaching Claude how to run and test our app, we were able to move to 80% AI code reviews.</p>
+<p>At this point we could have our cloud agent build &ldquo;small tickets&rdquo; and push its own PRs, but this only worked well for simple changes.</p>
+<p>By August I was setting up our real <em>software factory</em> for the team. After some <a href="https://scottpersinger.com/blog/posts/2026-08-24-building-your-software-factory.html">experimentation</a>, we settled on this <em>agent team</em>:</p>
+<ul>
+<li>BzPM - our <em>product manager</em> agent, running Claude with Fable, and skills and instructions for both spec&rsquo;ing new work, creating JIRA tickets, and managing the other agents of the team.</li>
+<li>Builder - our primary <em>building</em> agent, running Opus 5. Has skills and guardrails for both constructing new code, and testing and validating new features and bug fixes.</li>
+<li>Merger - our agent dedicated just to <em>merging</em> PRs. Using this agent offloads merge and conflict resolution from the <em>Builder</em> so we don&rsquo;t bottleneck on merges (since writing the code for tickets is the long pole).</li>
+<li>Omni - This agent reviews operational signals, Sentry reports, user feedback, and agent traces, to detect issues found in production. When issues are found it creates JIRA tickets which can then get picked up by the other agents of the factory.</li>
+</ul>
+<p>Each agent relies on a <code>PROTOCOL.md</code> file which give it its instructions and explains its role in the factory. <em>BzPM</em> acts as the coordinator driving Builder and Merger. The protocol also describes how <em>JIRA tickets</em> should transition status states:</p>
+<p><img alt="BizTrip task board showing To Do, Ready, In Progress, and In Review columns" src="../../images/blog-biztrip-factory-jira-board.jpg"></p>
+<h2>Communication</h2>
+<p>All our agents are linked into our <em>Slack workspace</em>, and they communicate with each other in Slack channels just like other members of the team. Having visibility in Slack allows us to monitor each agent and supervise their interactions with each other.</p>
+<p>In addition all work status is tracked in JIRA. The combination allows us to monitor the state of each <em>ticket</em>, while debugging issues in detail within the Slack conversation.</p>
+<p>Besides text, agents are able to share screenshots and recordings into Slack to help us verify their work. Our protocol instructs the PM to create a new Slack channel dedicated to the work on each JIRA ticket: </p>
+<p><img alt="Builder and Merger agents coordinating a pull request in the BP-334 Slack channel" src="../../images/blog-biztrip-factory-slack-channel.jpg"></p>
+<p>This gives us a simple, human-friendly model for tracking all ticket progress, debugging the work as it progresses.</p>
+<h2>PR Review</h2>
+<p>PRs created by the factory are reviewed twice: once by the <em>Builder</em> after it completes work on a ticket, and a second time by the <em>PM</em> agent. The adversarial review performs both static code analysis, and examines if the Builder provided evidence that the task was completely properly. </p>
+<p><img alt="Review of Teams trip chats showing an approve-once-fixed verdict and risk boundary checks" src="../../images/blog-biztrip-factory-pr-review.jpg"></p>
+<p>the review protocol defines &lsquo;high&rsquo;, &lsquo;medium&rsquo;, and &lsquo;low&rsquo; urgency issues and these are color coded into the review comment. The color coding helps us humans on the team quickly assess the state of a PR. Our protocol indicates that <em>High</em> items MUST be fixed, <em>Medium</em> issues are recommended to fix but don&rsquo;t block the PR. </p>
+<p>This adversarial review system means that many PRs are fixed/improved autonomously before merging, and people on the team can easily review the history of any PR.</p>
+<h3>Required human-in-the-loop</h3>
+<p>Any PRs which touch security sensitive code (RBAC, SSO, authentication, &hellip;) are labeled as requiring human review. These PRs can receive positive commentary from an agent, but a human is required to manually approve the PR before it can be merged.</p>
+<h2>Positive results</h2>
+<p>All engineers use the software factory, and our product managers are now able to build entire features independently using just the factory. We spend less time monitoring system performance reliability and since we have agentic loops setup to help us.</p>
+<p>We still do manual code review for large architecture and data model changes, but more of our <em>manual time</em> now goes to improving the performance of the software factory itself via improved <em>skills</em>, tools and guardrails.</p>
+<p>Critically, every developer and PM understands the product features we are building and is able to execute features streams with much greater autonomy as a result of operating at a much higher level of abstraction.</p>
+<p>Since standardizing on our software factory, measured PR delivery velocity has improved by 2.5x. This improvement took 4 months. Our prior evolution from <em>AI code completion</em> &ndash;&gt; <em>AI code review</em> also generated a 2.5x velocity improvement, but took us 10 months. Overall the Biztrip team has improved delivery velocity by 6x since we started in April 2025, without significantly growing team headcount.</p>
+<h2>What&rsquo;s next</h2>
+<p>The software factory tooling still leaves much to be desired. We have home-grown much of the components, and we designed around our existing human-centric JIRA/Github/Slack workflow. The result still requires too much context switching between tools to manage our work at different levels of detail.</p>
+<p>Identity and attribution are still sore points, as our agents are not fully represented as autonomous principals in our tools like Slack and Github. Work attribution (&ldquo;agent X did this work at the behest of user Y&rdquo;) can still be fuzzy and isn&rsquo;t recorded as systematically as we would like.</p>
+<p>And the factory itself doesn&rsquo;t always run perfectly - it is possible to get two agents working on the same ticket, although two <em>people</em> filing tickets for the same issue is even more common! </p>
+<p>We are also continuing to find better ways to integrate unit/integration/acceptance/eval testing into an effective testing regime that is still time and token efficient.</p>
+    </div>
+
+    <div class="foot">
+      <div class="tags" data-tags></div>
+      <a class="btn line" href="../">← All posts</a>
+    </div>
+
+    <div class="author">
+      <img src="../../images/scott_profile.jpg" alt="Scott Persinger" />
+      <div>
+        <h4>Scott Persinger</h4>
+        <p>Co-founder &amp; CTO at <a href="https://biztrip.ai" target="_blank" rel="noopener">BizTrip.ai</a>. Four-time founder, two acquisitions, 25+ years shipping platforms, payments, and AI agents.
+          <a href="mailto:scottp@biztrip.ai">Email</a> · <a href="https://www.linkedin.com/in/scottpersinger/" target="_blank" rel="noopener">LinkedIn</a> · <a href="https://github.com/scottpersinger" target="_blank" rel="noopener">GitHub</a></p>
+      </div>
+    </div>
+  </div>
+</article>
+</main>
+
+<footer>
+  <p>© 2026 Scott Persinger — <a href="../../">scottpersinger.com</a></p>
+</footer>
+
+<script>
+  // scroll progress
+  const bar = document.getElementById('progress');
+  addEventListener('scroll', () => {
+    const h = document.documentElement;
+    bar.style.width = (h.scrollTop / (h.scrollHeight - h.clientHeight) * 100) + '%';
+  }, {passive:true});
+
+  // date, reading time, tags — all derived from the <meta> tags above
+  const meta = n => (document.querySelector(`meta[name="${n}"]`) || {}).content || '';
+  const d = new Date(meta('date') + 'T12:00:00');
+  const pretty = d.toLocaleDateString('en-US', {year:'numeric', month:'short', day:'numeric'});
+  document.querySelectorAll('[data-date]').forEach(el => el.textContent = pretty);
+  const words = document.querySelector('.prose').textContent.trim().split(/\s+/).length;
+  document.getElementById('rt').textContent = Math.max(1, Math.round(words / 220)) + ' min read';
+  const tags = meta('tags').split(',').map(s => s.trim()).filter(Boolean);
+  document.querySelector('[data-tags]').innerHTML = tags.map(t => `<span class="tag">${t}</span>`).join('');
+</script>
+</body>
+</html>
